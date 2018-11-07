@@ -1,0 +1,65 @@
+<div class="main-width">
+	<div class="header-logo"><a href="/" rel="home"><img width="269" height="53" alt="LottoPark" src="https://content.lottopark.com/uploads/sites/2/logo.png" title="LottoPark &#8211; The world&#039;s biggest lotteries online!"></a></div>
+	<div class="mobile-menu mobile-only pull-right">
+		<a href="#" class="mobile-menu-trigger">
+			<span class="fa fa-bars" title="Menu"></span>
+		</a>
+	</div>
+	<section class="user-area">
+		{% if user %}
+		<div class="user-info">
+			<div class="user-info-area menu-trigger">
+				<a href="/account/" class="user-info-link">
+					<span class="fa fa-user-circle-o" aria-hidden="true"></span>
+					<span class="user-name">{{ user.email }}</span>
+					<span class="fa fa-chevron-down" aria-hidden="true"></span>
+					<span class="user-balance">€0.00</span>
+				</a>
+			</div>
+			<div class="menu-wrapper" style="display: none;">
+				<div class="user-menu-content">
+					<div class="user-menu-item">
+						<a href="/account/">
+							<span class="fa fa-cog" aria-hidden="true"></span>
+							<span class="user-menu-item-link">My account</span>
+						</a>
+					</div>
+					<div class="user-menu-item">
+						<a href="/account/tickets/">
+							<span class="fa fa-ticket" aria-hidden="true"></span>
+							<span class="user-menu-item-link">My tickets</span>
+						</a>
+					</div>
+					<div class="user-menu-item user-menu-item-nmr">
+						<a href="/account/transactions/">
+							<span class="fa fa-money" aria-hidden="true"></span>
+							<span class="user-menu-item-link">My transactions</span>
+						</a>
+					</div>
+					<div class="user-menu-item-container">
+						<a href="/deposit/" class="btn btn-primary">Deposit</a>								
+						<a href="/user/logout/" class="logout pull-right">log out</a>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% else %}
+		<a href="/login" id="btn-login" class="pull-left btn btn-lg btn-secondary btn-login popup-login btn-login-order">{{__('login')}}</a>
+		<a href="/signup" id="btn-signup" class="pull-left btn btn-lg btn-secondary btn-signup popup-signup btn-signup-order">{{__('signUp')}}</a>
+		{% endif %}
+		<div class="pull-left order-info-area">
+			<div class="order-info menu-trigger order-info-notempty">
+				<a href="/orders" class="user-info-link">
+					<span class="fa fa-shopping-cart" aria-hidden="true"></span> <span class="order-count">{{orderTotal.count}}</span>
+					<div class="order-info-desc pull-right">
+						<span class="order-info-amount">€{{orderTotal.amount}}</span><br>
+						<span class="order-info-link">checkout</span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</section>
+	<div class="clearfix"></div>
+</div>

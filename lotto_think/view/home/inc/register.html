@@ -1,0 +1,23 @@
+<form class="platform-form platform-form-register" autocomplete="off" method="post" action="/signup">
+  <input type="hidden" name="goback" class="form-order-return" value="0">
+	<input type="hidden" name="lotto_csrf_token" value="62e85ce4e283cd5882fccfece2ad63ba527a01fececd67472fa4a7440abf6e2217216d37c767394e37a2cbc3512384ef7593538745b4fb0879f95c2b6aa9a8b5" />
+	  <p class="text-center">Already a member? <a href="#" class="popup-login">Login here</a>.</p>
+
+  <div class="form-group">
+        <input type="email" autocomplete="email" required value="" class="form-control" id="inputEmail" name="register[email]" placeholder="Your e-mail address">
+  </div>
+  <div class="form-group">
+        <input type="password" required autocomplete="new-password" class="form-control" id="inputPassword" name="register[password]" placeholder="Your password">
+  </div>
+  <div class="form-group">
+        <input type="password" required autocomplete="new-password" class="form-control" id="inputRPassword" name="register[rpassword]" placeholder="Repeat your password">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="register[accept]" required value="1"> I accept the <a href="/terms/" target="_blank">Terms</a> and the <a href="/privacy/" target="_blank">Policy</a>    </label>
+  </div>
+    <div class="platform-form-btn">
+    <button type="submit" class="btn btn-primary btn-lg btn-mobile-large">sign up</button>
+  </div>
+  <div class="clearfix"></div>
+</form>	

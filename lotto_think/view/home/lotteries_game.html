@@ -1,0 +1,228 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+{% include "./inc/play_nav.html" %}
+<div class="main-width content-width">
+    <div class="content-box">
+        <div class="content-box-main">
+            <section class="page-content">
+                <article class="page">
+                    {{ lotteries[0].html_content }}
+                </article>
+            </section>
+            <div class="info-mobile-show">
+                <div class="info-mobile-latest-results">
+                    <h2 class="info-mobile-latest-results-header">Latest Result                                (Nov 3, 2018)</h2>
+                    <span class="mobile-only-label">Latest Result                                (Nov 3, 2018)</span>
+                    <div class="ticket-line">
+                        
+                        <div class="ticket-line-number">15</div>
+                        <div class="ticket-line-number">21</div>
+                        <div class="ticket-line-number">24</div>
+                        <div class="ticket-line-number">32</div>
+                        <div class="ticket-line-number">65</div>
+                        <div class="ticket-line-bnumber">11</div>
+                    </div>                        
+                </div>
+                <div class="widget widget_lotto_platform_widget_small_lottery_draw">
+                    <div class="small-widget small-widget-draw">
+                        <div class="small-widget-draw-image">
+                            <img src="{{lottery.picture}}" alt="{{lottery.title}}">
+                        </div>
+                        <h2 class="small-widget-draw-title"><a href="/play/{{lottery.name}}">{{lottery.title}}</a></h2>
+                        <div class="small-widget-draw-amount">
+                            <span class="tooltip tooltip-bottom local-amount" data-tooltip="${{lottery.jackot_amount}}">CN¥ 489 m</span>	</div>
+                            <time datetime="{{lottery.draw_at}}" class="widget-ticket-time-remain"><span class="fa fa-clock-o" aria-hidden="true"></span>draw in 3 days</time>
+                        <div class="widget-small-draw-button-container">
+                            <a href="/play/{{lottery.name}}" class="btn btn-primary widget-small-lottery-button">play now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-short-content">
+                <table class="table table-short">
+                    <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Schedule</th>
+                        <th>Guess Range</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="table-short-country"><span class="mobile-only-label">Country</span>
+                            <i class="sprite-lang sprite-lang-us"></i>{{lottery.country}}                                </td>                                <td>
+                            <span class="mobile-only-label">Schedule</span>
+                            Thursday 3:59 AM GMT <span class="fa fa-clock-o tooltip" data-tooltip="<strong>Lottery Local Time:</strong> Wednesday 10:59 PM EST"></span><span class="mobile-only-time"><strong>Lottery Local Time:</strong> Wednesday 10:59 PM EST</span><br>Sunday 3:59 AM GMT <span class="fa fa-clock-o tooltip" data-tooltip="<strong>Lottery Local Time:</strong> Saturday 10:59 PM EST"></span><span class="mobile-only-time"><strong>Lottery Local Time:</strong> Saturday 10:59 PM EST</span>                                </td>                                <td>
+                            <span class="mobile-only-label">Guess Range</span>
+                            {{lottery.n_count}}/{{lottery.n_range}} {% if lottery.b_count %}+ {{lottery.b_count}}/{{lottery.b_range}} {% endif %}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-short-line" colspan="3">
+                            <span class="table-short-label">Latest Result                                        (Nov 3, 2018): </span>
+                            <span class="mobile-only-label">Latest Result                                        (Nov 3, 2018)</span>
+                        <div class="ticket-line"><div class="ticket-line-number">15</div><div class="ticket-line-number">21</div><div class="ticket-line-number">24</div><div class="ticket-line-number">32</div><div class="ticket-line-number">65</div><div class="ticket-line-bnumber">11</div></div>                                </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <section class="page-content page-content-more">
+                <article class="page">
+                    {{articles[1].html_content}}
+                </article>
+            </section>
+            <div class="info-detailed-content">
+                <table class="table table-info-detailed">
+                    <thead>
+                    <tr>
+                        <th class="text-left">Tier</th>
+                        <th class="text-left">Match <div class="ticket-line-number">X</div>                                                                                +
+                            <div class="ticket-line-bnumber">X</div>                                                                                                                    </th>
+                        <th>Prize</th>
+                        <th class="text-right">Chance to win</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #1</span><span class="mobile-hide">I</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                5
+                                
+                                                                            +                                            1                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">Jackpot</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 292,201,338                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #2</span><span class="mobile-hide">II</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                5
+                                
+                                                                            +                                            0                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$1,000,000</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 11,688,053.52                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #3</span><span class="mobile-hide">III</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                4
+                                
+                                                                            +                                            1                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$50,000</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 913,129.18                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #4</span><span class="mobile-hide">IV</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                4
+                                
+                                                                            +                                            0                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$100</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 36,525.17                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #5</span><span class="mobile-hide">V</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                3
+                                
+                                                                            +                                            1                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$100</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 14,494.11                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #6</span><span class="mobile-hide">VI</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                3
+                                
+                                                                            +                                            0                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$7</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 579.76                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #7</span><span class="mobile-hide">VII</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                2
+                                
+                                                                            +                                            1                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$7</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 701.33                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #8</span><span class="mobile-hide">VIII</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                1
+                                
+                                                                            +                                            1                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$4</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 91.98                                        </td>
+                        </tr>
+                                                        <tr>
+                            <td>
+                                <span class="mobile-only-label">Prize #9</span><span class="mobile-hide">IX</span>
+                            </td>
+                            <td class="text-left"><span class="mobile-only-label">Match <div class="ticket-line-number ticket-line-number-small">X</div>                                                                                                    +
+                                        <div class="ticket-line-bnumber ticket-line-number-small">X</div>                                                : </span>
+                                0
+                                
+                                                                            +                                            1                                        </td>
+                                                                    <td class="text-center table-info-detailed-prize"><span class="mobile-unbold mobile-only-label">Prize                                                :</span> <span class="table-info-detailed-prize-bold"><span class="table-info-detailed-prize-amount">$4</span></span></td>
+                            <td class="text-right"><span class="mobile-unbold mobile-only-label">Chance to win                                                :</span> 1 in 38.32                                        </td>
+                        </tr>
+                                                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right">Overall chances of winning any prize:
+                        </td>
+                        <td class="text-right">1 in 24.87</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="content-box-sidebar">
+            <div class="main-width">
+	            <div class="small-widgets-content">
+                    <div id="lotto_platform_widget_small_lottery_draw-3" class="widget widget_lotto_platform_widget_small_lottery_draw" style="width: calc(100%); margin-left: 0px; margin-right: 0px;"><div class="small-widget small-widget-draw">
+                    <div class="small-widget-draw-image">
+                        <img src="{{lottery.picture}}" alt="{{lottery.title}}">
+                    </div>
+	                <h2 class="small-widget-draw-title"><a href="/play/{{lottery.name}}">{{lottery.title}}</a></h2>
+	                <div class="small-widget-draw-amount">
+                        <span class="tooltip tooltip-bottom local-amount" data-tooltip="$71,000,000">CN¥ 489 m</span>	</div>
+	                    <time datetime="1541649540" class="widget-ticket-time-remain"><span class="fa fa-clock-o" aria-hidden="true"></span>draw in 3 days</time>
+	                    <div class="widget-small-draw-button-container">
+		                <a href="/play/{{lottery.name}}" class="btn btn-primary widget-small-lottery-button">play now</a>
+	                </div>
+	            </div>
+            </div>
+            <div class="clearfix"></div>                	
+            <div class="clearfix"></div>
+	    </div>
+    </div>            
+</div>
+    <div class="clearfix"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "../inc/base.html" %}
+
+{% block content %}
+<div class="main-width content-width">
+	<div class="content-box">
+	<section class="page-content">
+		<article class="page">
+					<h1>Frequently Asked Questions</h1>
+			<p>Select a category and pick the matching subject.</p>
+		</article>
+			<section class="faq">
+			<nav class="faq-nav">
+				<div class="mobile-only">
+					<label for="faq-mobile-cats" class="faq-cats-label">Category:</label> 
+					<select id="faq-mobile-cats" class="faq-cats">
+						<option data-link="/faq/" value="0">choose category</option>
+                        <option value="{{article.id}}" data-link="/faq/category/lotteries-and-rollovers/">Lotteries and rollovers</option>
+                        <option value="18" data-link="/faq/category/lotto-tickes/">Lotto tickets</option>
+                        <option selected="selected" value="16" data-link="/faq-category/lottopark_1/">LottoPark</option>
+                        <option value="29" data-link="/faq/category/lottopark-advantages/">LottoPark Advantages</option>
+                        <option value="19" data-link="/faq/category/payment-and-withdrawal-methods/">Payment and withdrawal methods</option>
+                        <option value="20" data-link="/faq/category/winnings/">Winnings</option>
+                    </select>
+				</div>
+				<ol>
+                    <li><a href="/faq/category/lotteries-and-rollovers/">Lotteries and rollovers</a></li>
+                    <li><a href="/faq/category/lotto-tickes/">Lotto tickets</a></li>
+                    <li class="current-cat"><a href="/faq-category/lottopark_1/">LottoPark<span class="faq-item-active-mark"></span></a></li>
+                    <li><a href="/faq/category/lottopark-advantages/">LottoPark Advantages</a></li>
+                    <li><a href="/faq/category/payment-and-withdrawal-methods/">Payment and withdrawal methods</a></li>
+                    <li><a href="/faq/category/winnings/">Winnings</a></li>
+                </ol>
+			</nav>
+			
+			<article class="faq-content">
+			<h2>LottoPark</h2>
+						<div class="faq-content-answers">
+								<h3><a href="#" class="faq-toggle"><span class="faq-toggle-plus"><span class="fa fa-plus" aria-hidden="true"></span></span><span class="faq-title">I’ve got some doubts. Who can I contact?</span></a></h3>
+				<div class="faq-answer hidden-normal">
+				<p>Feel free to contact us: <a href="/contact/">contact LottoPark</a></p>
+<p>We’ll make every effort to clarify your doubts and answer all your questions.</p>
+				</div>
+								<h3><a href="#" class="faq-toggle"><span class="faq-toggle-plus"><span class="fa fa-plus" aria-hidden="true"></span></span><span class="faq-title">Is Lottopark the organiser of the offered lotteries?</span></a></h3>
+				<div class="faq-answer hidden-normal">
+				<p>No. Each of the lotteries is organised by a company eligible to organise lotteries in the area of local availability. LottoPark offers a courier service, allowing the user to buy lottery tickets offered on the website. Our goal is to help with playing lotto in an easy, convenient, and safe way.</p>
+				</div>
+								<h3><a href="#" class="faq-toggle"><span class="faq-toggle-plus"><span class="fa fa-plus" aria-hidden="true"></span></span><span class="faq-title">What kind of experience in the lotto industry does LottoPark have?</span></a></h3>
+				<div class="faq-answer hidden-normal">
+				<p>The founders of LottoPark have vast experience in the lotto industry, gained by cooperating with the leading lottery organisers in Europe and the United States. The LottoPark team is a set of highly-qualified employees for whom lotteries are more than only a dayjob but a passion, which helps us provide the best online lotto experience for our users.</p>
+				</div>
+								<h3><a href="#" class="faq-toggle"><span class="faq-toggle-plus"><span class="fa fa-plus" aria-hidden="true"></span></span><span class="faq-title">Where is the LottoPark headquarters located?</span></a></h3>
+				<div class="faq-answer hidden-normal">
+				<p>Lottopark headquarters is in Curacao,&nbsp;Netherlands Antilles. We also have a local office in London, UK.</p>
+				</div>
+							</div>
+						</article>
+			<div class="clearfix"></div>
+		</section>
+	</section>
+	<div class="clearfix"></div>
+	</div>
+</div>
+{% endblock %}

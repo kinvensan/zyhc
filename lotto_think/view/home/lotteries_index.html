@@ -1,0 +1,74 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+<div class="main-width content-width">
+		<div class="content-box">
+			<section class="page-content">
+				<article class="page">
+					<h1>Lottery Games Online</h1>
+					<p>LottoPark allows you to participate in the world’s biggest lotteries. We give you the possibility of purchasing lottery tickets in a safe and convenient manner from the comfort of your home.</p>
+                    <p>We offer the world’s biggest lotteries: European, American, and many more from all over the globe.</p>
+                    <p>Learn the facts about them all and pick the one that suits you most—or play many!&nbsp;<strong>Play lotto online</strong>&nbsp;and win without leaving your home!</p>
+				</article>
+			</section>
+	        <div class="info-content">
+				<div class="mobile-only pull-right">
+				<label for="info-mobile-sort" class="table-sort-label">Sort by: </label>
+				<select id="info-mobile-sort" class="info-mobile-sort">
+					<option value="1_0">Lottery - from A to Z</option>
+					<option value="1_1">Lottery - from Z to A</option>
+					<option value="2_0" selected="selected">Draw - by oldest</option>
+					<option value="2_1">Draw - by newest</option>
+					<option value="4_1">Winning Odds - by lowest</option>
+					<option value="4_0">Winning Odds - by highest</option>
+					<option value="5_0">Estimated Jackpot - by lowest</option>
+					<option value="5_1">Estimated Jackpot - by highest</option>
+				</select>
+			</div>
+			<div class="clearfix"></div>
+			<table class="table table-info table-hover tablesorter tablesorter-default" id="info-table" role="grid">
+				<thead>
+					<tr role="row" class="tablesorter-headerRow">
+						<th data-column="0" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" aria-disabled="true" unselectable="on" aria-sort="none" aria-label="Country: No sort applied, sorting is disabled" style="user-select: none;"><div class="tablesorter-header-inner">Country</div></th>
+						<th data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="info-table" unselectable="on" aria-sort="none" aria-label="Lottery: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">Lottery</div></th>
+						<th data-column="2" class="tablesorter-header tablesorter-headerAsc" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="info-table" unselectable="on" aria-sort="ascending" aria-label="Draw: Ascending sort applied, activate to apply a descending sort" style="user-select: none;"><div class="tablesorter-header-inner">Draw</div></th>
+						<th data-column="3" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" aria-disabled="true" unselectable="on" aria-sort="none" aria-label="Guess Range: No sort applied, sorting is disabled" style="user-select: none;"><div class="tablesorter-header-inner">Guess Range</div></th>
+						<th data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="info-table" unselectable="on" aria-sort="none" aria-label="Winning Odds: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">Winning Odds</div></th>
+						<th data-column="5" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="info-table" unselectable="on" aria-sort="none" aria-label="Estimated Jackpot: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">Estimated Jackpot</div></th>
+						<th data-column="6" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" aria-disabled="true" unselectable="on" aria-sort="none" aria-label=": No sort applied, sorting is disabled" style="user-select: none;"><div class="tablesorter-header-inner">&nbsp;</div></th>
+					</tr>
+				</thead>
+				<tbody aria-live="polite" aria-relevant="all">
+                {% for lottery in lotteries -%}
+                    <tr role="row">
+                        <td class="info-image text-nowrap"><i class="sprite-lang {{__.jed.dgettext('csslang',lottery.country)}}"></i>{{lottery.country}}</td>
+                        <td class="info-lottery-image"><img src="{{lottery.picture}}" alt=""></td>
+                        <td class="info-lottery"><a href="/lotteries/{{lottery.name}}">{{lottery.title}}</a></td>
+                        <td class="info-next" data-text="{{lottery.draw_at}}"><span class="mobile-only-label">Next Draw:</span> {{__.moment(lottery.draw_at*1000).format('L')}}</td>
+                        <td><span class="mobile-only-label">Guess Range:</span> {{lottery.n_count}}/{{lottery.n_range}} {% if lottery.b_count %}+ {{lottery.b_count}}/{{lottery.b_range}} {% endif %}</td>
+                        <td><span class="mobile-only-label">Winning Odds:</span> 1 in {{lottery.winning_odds}}</td>
+                        <td class="info-jackpot" data-text="{{lottery.jackpot_amount}}"><span class="mobile-only-label">Estimated Jackpot:</span> <span class="info-jackpot-amount">{{__.numeral(lottery.jackpot_amount).format(lottery.country)}}</span></td>
+                        <td class="info-play table-btn text-right"><a href="/play/{{lottery.name}}" class="btn btn-primary">play</a></td>
+					</tr>
+                {%- endfor %}
+                </tbody>
+			</table>
+			</div>
+			<section class="page-content page-content-more">
+				<article class="page">
+					<h2>Who can play online lottery?</h2>
+                    <p>The LottoPark offer is available to all users who are of the legal age according to the law applicable in the place of residency. All of the lotteries available on our website follow their own rules for age requirements to participate.</p>
+                    <p>Every person who meets the age criteria and has access to one of the payment channels, may purchase&nbsp;<strong>lottery tickets online</strong>&nbsp;on the LottoPark website.</p>
+                    <p>Your place of residency doesn’t matter, because lottery games online are available from any place in the world. It’s a convenient way to play the biggest lotteries from all over globe. Europeans can play the American lotto, while people from both Americas can play the European lotteries. The internet makes lotto borderless!</p>
+                    <p>If your age isn’t an obstacle – play the lotto online! Pick a lottery which meets your expectations the most and buy the lotto tickets.&nbsp;<strong>Lottery games online</strong>&nbsp;are fun, so if you dream about a big win and wish to change your life – LottoPark’s offer is the right thing for you!</p>
+                    <h2>How to play lotto online</h2>
+                    <p>Open an account and pick a lottery you’re interested in from our offer. You can buy one or more tickets for a particular&nbsp;lottery.&nbsp; You can play just one lottery or participate in many. You can buy tickets for the current draw or for subsequent draws.</p>
+                    <p>You can get a ticket only for yourself, but you can also play together with your friends.&nbsp;<strong>Play online lottery</strong>&nbsp;with your friends to get more tickets, and the overall tickets’ cost will be split among the members of the group. It’s a simple way to increase your chances of winning.</p>
+                    <p>If you wish to&nbsp;<strong>play lottery games online</strong>, you need to choose one of the online payment methods such as credit cards or one of the e-wallets such as Skrill. Buying the tickets takes just a few clicks.</p>
+                    <p>All purchased tickets will be visible in your user account.</p>
+                    <p>We encourage you to check the information about the lotteries available on LottoPark.</p>
+                    <p>Buying lotto tickets online gives you the possibility of participating in the world’s biggest lotteries in a comfortable, fast, convenient, and safe manner, all without leaving your comfy chair.</p>
+				</article>
+			</section>
+		</div>
+	</div>
+    {% endblock %}

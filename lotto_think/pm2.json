@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "lotto_think",
+    "script": "production.js",
+    "cwd": "/Users/kinven/Documents/mycode/sc4/lotto_think",
+    "exec_mode": "fork",
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}

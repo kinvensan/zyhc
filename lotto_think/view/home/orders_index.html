@@ -1,0 +1,75 @@
+{% extends "./inc/base.html" %}
+
+{% block content %}
+<div class="main-width content-width">
+	<div class="content-box">
+        <section class="page-content">
+            <article class="page">
+                <div class="order-lottery-quick-pick-container pull-right">
+                    <div class="order-lottery-quick-pick-label pull-left">Add Quick Pick ticket:</div>
+                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/eurojackpot/1">Eurojackpot</a></div>
+                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/euromillions/1">EuroMillions</a></div>
+                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/superenalotto/1">SuperEnalotto</a></div>
+                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/powerball/1">Powerball</a></div>
+                    <div class="clearfix"></div>
+                </div>
+                <h1 class="header-order" id="your-order">Your order</h1>
+                <div class="clearfix"></div>
+            </article>
+        </section>
+        <div class="platform-alert platform-alert-success">
+            <div class="main-width">
+                <span class="fa fa-check-circle"></span> The ticket has been added to your order!
+            </div>
+        </div>		
+        <table class="table table-order">
+			<tbody>
+			{% for item in orders -%}
+				<tr>
+					<td>
+						<div class="order-summary-image">
+							<img src="{{item.picture}}" alt="{{item.lottery_title}}">
+						</div>
+					</td>
+					<td>
+						<div class="order-summary-content">
+							<span class="order-summary-content-header"><a href="/play/{{item.lottery_name}}">{{item.lottery_title}}</a> ticket</span><span class="mobile-hide"> - </span><span class="tooltip tooltip-bottom local-amount" data-tooltip="$52,000,000">CN¥ 361 m</span> to win<br class="mobile-hide"><span class="mobile-only">, </span>
+							<span class="order-summary-content-desc">Lines: <span>{{item.ticket_lines_count}}</span> × {{item.currency}}{{item.price}}</span><br>
+											Draw event on Friday, November 2, 2018				
+						</div>
+					</td>
+					<td class="text-right col-amount">{{item.currency}}{{item.ticket_prices}}</td><td class="text-right order-action"><a href="/orders/remove/{{item.id}}" class="tooltip tooltip-bottom" data-tooltip="Remove"><span class="fa fa-times"></span></a></td><td class="text-right order-action"><a href="#" class="order-summary-button-details tooltip tooltip-bottom" data-tooltip="Details"><span class="fa fa-search"></span></a></td>
+				</tr>
+				<tr class="hidden-normal">
+					<td>&nbsp;</td>
+					<td class="order-summary-lines">
+					{% for line in item.ticket_lines -%}
+                        <div class="ticket-line">
+							{% for nball in line.n -%}
+							<div class="ticket-line-number">{{nball}}</div>
+							{%- endfor %}
+							{% for bball in line.b -%}
+							<div class="ticket-line-bnumber">{{bball}}</div>
+							{%- endfor %}					
+						</div>
+                    {%- endfor %}
+					</td>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+				</tr>
+			{%- endfor %}
+			</tbody>
+		</table>
+		<div class="clearfix"></div>
+        <div class="order-buttons">
+            <div class="pull-left">
+                <a href="/play/" class="btn btn-secondary">add more tickets</a>
+            </div>
+            <div class="pull-right">
+                <span class="order-sum">Total Sum: <span>€{{orderTotal.amount}}</span></span>
+                <a href="/orders/#payment" class="btn btn-primary popup-login popup-order" data-minorder="€0.00">pay now</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

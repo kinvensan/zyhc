@@ -1,0 +1,13 @@
+{% extends "../inc/base.html" %}
+
+{% block content %}
+<div class="main-width content-width">
+	<div class="content-box">
+	<section class="page-content">
+		<article class="page">
+			{{ article.html_content|safe }}
+		</article>
+	</section>
+	</div>
+</div>
+{% endblock %}

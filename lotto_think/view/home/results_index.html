@@ -1,0 +1,69 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+<div class="main-width content-width">
+		<div class="content-box">
+			<section class="page-content">
+				<article class="page">
+					<h1>Lottery Winning Numbers – Lotto Results Online</h1>
+										<p>Check the current lotto results and&nbsp;to see if you have won! All of the results presented on our website are the official results of the last draw of a particular lottery. We advise you to <strong>check lotto numbers</strong> from your ticket and compare them with the numbers drawn in a particular lottery draw.</p>
+<p>If the numbers from the draw match the ones you have selected while buying the lottery tickets, YOU WIN! In case you won the jackpot, contact us immediately.</p>
+				</article>
+			</section>
+	<div class="results-content">
+					<div class="mobile-only pull-right">
+				<label for="results-mobile-sort" class="table-sort-label">Sort by: </label>
+				<select id="results-mobile-sort" class="results-mobile-sort">
+					<option value="1_0">Lottery - from A to Z</option>
+					<option value="1_1">Lottery - from Z to A</option>
+					<option value="2_0">Last Draw - by oldest</option>
+					<option value="2_1" selected="selected">Last Draw - by newest</option>
+					<option value="3_0">Payout - by lowest</option>
+					<option value="3_1">Payout - by highest</option>
+				</select>
+			</div>
+			<div class="clearfix"></div>
+			<table class="table table-results table-hover tablesorter tablesorter-default" id="results-table" role="grid">
+				<thead>
+					<tr role="row" class="tablesorter-headerRow">
+						<th data-column="0" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" aria-disabled="true" unselectable="on" aria-sort="none" aria-label="Country: No sort applied, sorting is disabled" style="user-select: none;"><div class="tablesorter-header-inner">Country</div></th>
+						<th class="results-lottery-image-header tablesorter-header tablesorter-headerUnSorted" data-column="1" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label=": No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">&nbsp;</div></th>
+						<th data-column="2" class="tablesorter-header tablesorter-headerDesc" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="descending" aria-label="Lottery: Descending sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">Lottery</div></th>
+						<th data-column="3" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" aria-disabled="true" unselectable="on" aria-sort="none" aria-label="Last Draw: No sort applied, sorting is disabled" style="user-select: none;"><div class="tablesorter-header-inner">Last Draw</div></th>
+						<th data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label="Results: No sort applied, activate to apply a descending sort" style="user-select: none;"><div class="tablesorter-header-inner">Results</div></th>
+						<th data-column="5" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" aria-disabled="true" unselectable="on" aria-sort="none" aria-label="Payout: No sort applied, sorting is disabled" style="user-select: none;"><div class="tablesorter-header-inner">Payout</div></th>
+						<th data-column="6" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label=": No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">&nbsp;</div></th>
+					</tr>
+				</thead>
+				<tbody aria-live="polite" aria-relevant="all">
+				{% for result in results -%}                     						
+					<tr role="row">
+							<td class="results-image"><i class="sprite-lang {{__.jed.dgettext('csslang',result.country)}}"></i>{{result.country}}</td>
+							<td class="results-lottery-image"><img src="{{result.picture}}" alt=""></td>
+							<td class="results-lottery"><a href="/results/{{result.lottery_name}}">{{result.lottery_title}}</a></td>
+							<td class="results-last" data-text="{{result.last_draw_at}}">{{__.moment(result.last_draw_at*1000).format('L')}}</td>
+							<td><div class="ticket-line">
+							{%for n in result.result.n -%}
+								<div class="ticket-line-number">{{n}}</div>
+							{%- endfor %}
+							{% for b in result.result.b -%}
+								<div class="ticket-line-bnumber">{{b}}</div>
+							{%- endfor %}
+							</div></td>
+							<td class="results-payout" data-text="{{result.payout}}"><span class="results-payout-jackpot">Jackpot: Rollover</span><br>Total payout:<br class="mobile-hide"><span class="results-payout-amount">{{__.numeral(result.payout).format(result.country)}}</span>
+							</td>
+							<td class="table-btn"><a href="/play/{{result.lottery_name}}" class="btn btn-primary">play</a></td>
+					</tr>
+				{%- endfor %}	
+				</tbody>
+			</table>
+			</div>
+			{% if article %}
+			<section class="page-content page-content-more">
+				<article class="page">
+					{{ article.html_content | safe }}
+				</article>
+			</section>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

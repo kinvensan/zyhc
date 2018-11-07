@@ -1,0 +1,140 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+<div class="main-width relative">
+    <div class="content-nav-wrapper mobile-only">
+        <select class="content-nav">
+            <option selected="" value="/play/{{lottery.name}}">Play {{lottery.title}}</option>
+            <option value="/results/{{lottery.name}}">{{lottery.title}} Results</option>
+            <option value="/lotteries/{{lottery.name}}">{{lottery.title}} Information</option>
+            <option value="/category/{{lottery.name}}/">{{lottery.title}} News</option>
+        </select>
+    </div>
+    <nav class="content-nav mobile-hide">
+        <ul>
+            <li class="content-nav-active"><a href="/play/{{lottery.name}}">Play {{lottery.title}}</a></li>
+            <li><a href="/results/{{lottery.name}}">{{lottery.title}} Results</a></li>
+            <li><a href="/lotteries/{{lottery.name}}">{{lottery.title}} Information</a></li>
+            <li><a href="/category/{{lottery.name}}/">{{lottery.title}} News</a></li>
+            <div class="clearfix"></div>
+        </ul>
+    </nav>
+</div>
+<div class="widget widget_lotto_platform_widget_ticket">
+    <div class="main-width content-width">
+        <div class="content-box">
+            <div class="widget-ticket-wrapper">
+                <div class="widget-ticket-header-wrapper">
+                    <div class="widget-ticket-image">
+                        <img src="{{lottery.picture}}" alt="{{lottery.title}}">
+                    </div>
+                    <div class="widget-ticket-header">
+                        <h1 class="play-lottery" id="play-lottery">Play {{lottery.title}} Online</h1><div class="play-lottery-jackpot-amount"><span class="tooltip tooltip-bottom local-amount" data-tooltip="£{{lottery.jackpot_amount}}" style="position: relative;"><span class="currency-front">CN¥</span> 46 m</span></div>
+                        <time datetime="{{lottery.draw_at}}" class="widget-ticket-time-remain mobile-show"><span class="fa fa-clock-o" aria-hidden="true"></span>draw {{ lottery.draw_at | momentFromNow }}</time>
+                    </div>
+                    <div class="clearfix"></div>
+                </div> 
+                <div class="widget-ticket-buttons-all">
+                    <time datetime="{{lottery.draw_at}}" class="widget-ticket-time-remain mobile-hidden"><span class="fa fa-clock-o" aria-hidden="true"></span>draw {{ lottery.draw_at | momentFromNow }}</time>
+                    <button type="button" autocomplete="off" class="btn btn-secondary widget-ticket-quickpick-all">Quick Pick All</button>
+                    <button type="button" autocomplete="off" class="btn btn-secondary widget-ticket-clear-all" disabled="" title="Clear All"><span class="fa fa-trash-o" aria-hidden="true"></span></button>
+                </div>
+	            <div class="clearfix"></div>
+                <div class="small-purchase-section hidden">
+                    <a href="/order/quickpick/powerball/3/" data-count="3" class="small-purchase">
+                        <span class="small-purchase-description">
+                            <span class="small-purchase-description-primary-text">3 Quick-Pick lines</span>
+                            <span class="small-purchase-description-secondary-text">only €12.15</span>
+                        </span>
+                    </a>
+                    <a href="/order/quickpick/powerball/6/" data-count="6" class="small-purchase">
+                        <span class="small-purchase-description">
+                            <span class="small-purchase-description-primary-text">6 Quick-Pick lines</span>
+                            <span class="small-purchase-description-secondary-text">only €24.30</span>
+                        </span>
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+                <form method="post" action="/orders/" autocomplete="off" id="widget-ticket-form">
+                    <input type="hidden" autocomplete="nope" name="lotto_csrf_token" value="07f0dcc8266522169422521913ecea962c4960550d01eabef7dab74d91cb07eccfaa5c2ba5435c4f7cf0327d87274027eed17bb951f35e979fe09608040a12d8">
+                    <input type="hidden" autocomplete="nope" name="order[lottery]" value="{{lottery.id}}">
+                    <div class="widget-ticket-content" data-nrange="{{lottery.n_range}}" data-ncount="{{lottery.n_count}}" data-brange="{{lottery.b_range}}" data-bcount="{{lottery.b_count}}" data-currency="{{lottery.currency}}" data-format="{c}{n}.{s}" data-price="{{lottery.price * 100}}" data-min="1" data-min_bets="{{lottery.min_bets}}" data-max_bets="{{lottery.max_bets}}">
+                        <input type="hidden" autocomplete="nope" name="order[lines]" id="widget-ticket-input" value="">
+                        {% for i in range(0,25) -%}
+                        <div class="widget-ticket-entity relative mobile-hidden {{ '' if i<5 else 'hidden' }}" data-i="{{i}}" style="opacity: 1;">
+                            <div class="widget-ticket-mobile-close">
+                                <div class="pull-right">
+                                    <a class="dialog-close" href="#"><span></span></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="widget-ticket-entity-content">
+                                <div class="widget-ticket-buttons">
+                                    <button type="button" class="btn btn-xs btn-tertiary widget-ticket-button-clear" disabled="">Clear</button><button type="button" class="btn btn-xs btn-tertiary widget-ticket-button-quickpick">Quick Pick</button>
+                                </div>
+                                <div class="widget-ticket-icon-ok">
+                                    <span class="fa fa-check-circle" aria-hidden="true"></span>
+                                </div>
+                                <span class="widget-ticket-entity-help">Pick {{lottery.n_count}} numbers {% if lottery.b_count > 0 %} and {{lottery.b_count}} Red number {% endif %}</span>
+                                <span class="widget-ticket-entity-ok">OK                        </span>
+                                <span class="widget-ticket-entity-processing">Processing...                        </span>
+                                <div class="clearfix"></div>
+                                <div class="widget-ticket-numbers">
+                                    {% for k in range(1,lottery.n_range+1)-%}
+                                    <a href="#">{{k}}</a>
+                                    {%- endfor %}                      
+                                </div>
+                                {% if lottery.b_count > 0 -%}
+                                <div class="widget-ticket-bnumbers">
+                                    {% for k in range(1,lottery.b_range+1)-%}
+                                    <a href="#">{{k}}</a>
+                                    {%- endfor %}
+                                </div>
+                                {%- endif %}
+                                <div class="widget-ticket-mobile-button">
+                                    <a href="#" class="btn btn-primary disabled btn-mobile-large">confirm</a>
+                                </div>
+                            </div>
+                        </div>
+                        {%- endfor %}
+                        {% for j in range(0,25) -%}
+                        <div class="widget-ticket-entity-mobile {{'' if j==0 else 'mobile-hidden'}}" data-i="{{j}}">
+                            <a class="widget-ticket-entity-newline" href="#">+ Add new line</a>
+                            <a class="widget-ticket-entity-editline" href="#">+ Edit line</a>
+                            <a href="#" class="btn btn-tertiary btn-xs widget-ticket-entity-mobile-delete" title="Clear"><span class="fa fa-trash-o" aria-hidden="true"></span></a>
+                            <a href="#" class="btn btn-tertiary btn-xs widget-ticket-entity-mobile-quickpick">Quick Pick</a>
+                        </div>
+                        {%- endfor %}
+                        <div class="clearfix"></div>
+                        <div class="widget-ticket-buttons-bottom">
+                            <div class="pull-left">
+                                <button type="button" class="btn btn-sm btn-tertiary widget-ticket-button-less" disabled="">Less Lines -</button><button type="button" class="btn btn-sm btn-tertiary widget-ticket-button-more">More Lines +</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="pull-right widget-ticket-summary">
+                            <div class="widget-ticket-summary-content-total pull-left">
+                                <span class="widget-ticket-summary-content-header">Sum:</span>
+                                <span class="widget-ticket-summary-content-total-value"><span>€0.00</span></span>
+                            </div>
+                            <button type="submit" disabled="disabled" class="btn btn-primary pull-left widget-ticket-summary-button btn-mobile-large" id="play-continue">continue</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% if article %}
+<div class="main-width content-width">
+    <div class="content-box play-box">
+        <section class="page-content page-content-more">
+            <article class="page">
+                <p><span id="more-119"></span></p>
+                {{ article.html_content|safe }}
+            </article>
+        </section>
+    </div>
+</div>
+{% endif%}
+{% endblock %}
