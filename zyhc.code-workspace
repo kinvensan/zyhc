@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "amazon_crawler"
+		},
+		{
+			"path": "lotto_admin"
 		}
 	],
 	"settings": {}
