@@ -1,0 +1,47 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+<div class="main-width content-width content-payment">
+    <div class="content-box">
+	<section class="page-content">
+	    <article class="page"><h2 id="your-deposit">Balance Withdrawal</h2></article>
+	</section>
+    <div class="order-content" id="withdrawl">
+	<nav class="payment-nav">
+	    <div class="payment-nav-title">Choose payment method:</div>
+		<ul id="payment-method-ul">
+		<li class="active" data-type="2" data-subtype="0"><a href="#"><img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="PAYPAL"> PAYPAL<span class="payment-item-active-mark"></span></a>
+		</li>
+		</ul>
+	</nav>
+	<div class="payment-content">
+	    <form method="post" action="/withdrawl/apply" class="platform-form payment-form" autocomplete="off">
+		<input name="lotto_csrf_token" value="f57a1e3a8b2cd21f435106b19034cc4a7dcd2185fba9bea8d60b7083077d7c2f1b3aa6dec6094966ae80248042f48eb07e08b694daf0b70cb1ef25835fc58adb" type="hidden" id="form_lotto_csrf_token">
+		<div class="deposit-amounts">
+		<div class="deposit-amount" data-value="20">
+			<div class="deposit-amount-value">$20</div>
+		</div>
+		<div class="deposit-amount" data-value="50">
+			<div class="deposit-amount-value">$50</div>
+		</div>
+		<div class="deposit-amount" data-value="100">
+			<div class="deposit-amount-value">$100</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="deposit-amount platform-form">
+			<label for="inputAmount">Different amount:</label>
+			<input type="text" id="inputAmount" value=""><span class="deposit-amount-currency">$</span>
+			<div class="deposit-amount-error-cloud">The minimum deposit amount is €0.</div>
+		</div>
+		<div class="form-group">
+		    <label for="inputEmail" class="payment-cc-content-field">Paypal Account:</label>
+		    <input type="text" id="inputEmail" name="email" value="{{account.email}}">
+		</div>
+		
+	</div>
+	<button type="submit" class="btn btn-primary btn-lg btn-payment btn-mobile-large" id="paymentSubmit" name="payment" value="1">withdrawl</button>
+	    </form>	
+	</div>
+    </div>
+    </div>
+</div>
+{% endblock %}

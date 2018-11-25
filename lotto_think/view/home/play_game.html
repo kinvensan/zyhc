@@ -1,0 +1,131 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+{% import "./inc/inner_nav.html" as innerNav %}
+{{innerNav.play(1)}}
+<div class="widget widget_lotto_platform_widget_ticket">
+    <div class="main-width content-width">
+        <div class="content-box">
+            <div class="widget-ticket-wrapper">
+                <div class="widget-ticket-header-wrapper">
+                    <div class="widget-ticket-image">
+                        <img src="{{lottery.picture}}" alt="{{lottery.title}}">
+                    </div>
+                    <div class="widget-ticket-header">
+                        <h1 class="play-lottery" id="play-lottery">Play {{lottery.title}} Online</h1>
+                        <div class="play-lottery-jackpot-amount">
+                            <span class="fa fa-clock-o" aria-hidden="true"></span>
+                            <time data-datetime="{{lottery.draw_at}}" class="simple-countdown">draw {{ __.moment(lottery.draw_at*1000).toNow()}}</time>
+                        </div>
+                    </div>
+                </div> 
+                <div class="clearfix"></div>
+            </div>
+                <form method="post" action="/shopcart/save" autocomplete="off" id="widget-ticket-form">
+                    <input type="hidden" autocomplete="nope" name="lotto_csrf_token" value="07f0dcc8266522169422521913ecea962c4960550d01eabef7dab74d91cb07eccfaa5c2ba5435c4f7cf0327d87274027eed17bb951f35e979fe09608040a12d8">
+                    <input type="hidden" autocomplete="nope" name="lottery_id" value="{{lottery.id}}">
+                    <input type="hidden" id="ticket_bets" autocomplete="nope" name="ticket_bets" value="0">
+                    <input type="hidden" id="ticket_number" autocomplete="nope" name="ticket_number" value="0">
+                    <div class="widget-ticket-content" data-nrange="{{lottery.n_range}}" data-ncount="{{lottery.n_count}}" data-brange="{{lottery.b_range}}" data-bcount="{{lottery.b_count}}" data-currency="{{lottery.currency}}" data-format="{c}{n}.{s}" data-price="{{lottery.price * 100}}" data-min="1" data-min_bets="{{lottery.min_bets}}" data-max_bets="{{lottery.max_bets}}">
+                        <input type="hidden" autocomplete="nope" name="bets" id="widget-ticket-input" value="">
+                        <div class="widget-ticket-entity relative" data-i="1" style="opacity: 1;">
+                            <div class="widget-ticket-mobile-close">
+                                <div class="pull-right">
+                                    <a class="dialog-close" href="#"><span></span></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="widget-ticket-entity-content">
+                                <div class="widget-ticket-buttons">
+                                    <button type="button" class="btn btn-xs btn-tertiary widget-ticket-button-quickpick">win x 2</button>
+                                </div>
+                                <div class="widget-ticket-icon-ok">
+                                    <span class="fa fa-check-circle" aria-hidden="true"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="pull-left" style="padding-left: 25px;">
+                                    <span class="widget-ticket-entity-help">in 1 - {{lottery.b_range/2}}</span>
+                                    <div class="widget-ticket-numbers">
+                                        <button class="widget-ticket-bets btn-mobile-large" data-bets="1">L</button>     
+                                    </div>
+                                </div>
+                                <div class="pull-right" style="padding-right: 25px;">
+                                    <span class="widget-ticket-entity-help">in  {{lottery.b_range/2+1}} - {{lottery.b_range}}</span>
+                                    <div class="widget-ticket-numbers">    
+                                        <button class="widget-ticket-bets btn-mobile-large" data-bets="2">R</button>     
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="platform-form">
+                                    <div class="form-group">
+                                        <label id="bets-amount-label" for="bets-amount">&nbsp;</label>
+                                        <input type="text" value="" class="form-control widget-ticket-bets-amount" id="bets-amount" name="bets-amount" placeholder="Betting Amount">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-ticket-entity relative" data-i="2" style="opacity: 1;">
+                            <div class="widget-ticket-mobile-close">
+                                <div class="pull-right">
+                                    <a class="dialog-close" href="#"><span></span></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="widget-ticket-entity-content">
+                                <div class="widget-ticket-buttons">
+                                    <button type="button" class="btn btn-xs btn-tertiary widget-ticket-button-quickpick">win x 3</button>
+                                </div>
+                                <div class="widget-ticket-icon-ok">
+                                    <span class="fa fa-check-circle" aria-hidden="true"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                                {% if lottery.b_count > 0 -%}
+                                <div class="widget-ticket-bnumbers">
+                                    {% for k in range(1,lottery.b_range+1)-%}
+                                    <a href="#" class="widget-ticket-bets-number" data-number="{{k}}">{{k}}</a>
+                                    {%- endfor %}
+                                </div>
+                                {%- endif %}
+                                <div class="platform-form">
+                                    <div class="form-group">
+                                        <label for="bets-number-amount">&nbsp;</label>
+                                        <input type="text" value="" class="form-control widget-ticket-bets-amount" id="bets-number-amount" name="bets-number-amount" placeholder="Betting Amount">
+                                    </div>
+                                </div>             
+                                <div class="widget-ticket-mobile-button">
+                                    <a href="#" class="btn btn-primary disabled btn-mobile-large">confirm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="widget-ticket-buttons-bottom">
+                        <div class="pull-left">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="pull-right widget-ticket-summary">                     
+                            <div class="widget-ticket-summary-content-total pull-left">
+                                <span class="widget-ticket-summary-content-header">Sum:$</span>
+                                <span class="widget-ticket-summary-content-total-value"><span>0.00</span></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-left widget-ticket-summary-button btn-mobile-large" id="play-continue">continue</button>
+                        </div>
+                        <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if article %}
+<div class="main-width content-width">
+    <div class="content-box play-box">
+        <section class="page-content page-content-more">
+            <article class="page">
+                <p><span id="more-119"></span></p>
+                {{ article.content_html|safe }}
+            </article>
+        </section>
+    </div>
+</div>
+{% endif%}
+</div>
+{% endblock %}

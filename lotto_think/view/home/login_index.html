@@ -1,0 +1,36 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+<div class="main-width content-width">
+	<div class="content-box content-box-top">
+        <form id="formLogin" class="platform-form platform-form-login" method="post" action="/user/login">
+            <input type="hidden" name="goback" class="form-order-return" value="0">
+            <input type="hidden" name="lotto_csrf_token" value="a877ec934ad4630bed4202beed96fa66525de5ba21e053648bd919c7c00e468717c31f4e13545fe9fdf010bb276c2e72d2d8bed9a1c72e665e2b38e44b879443">
+            {% if(login_error) %}
+            <div class="platform-alert platform-alert-error">
+                <p><span class="fa fa-exclamation-circle"></span> {{login_error}}</p>            </div>
+            {% endif %}
+            <p class="text-center">
+                Don't have an account? <a href="#" class="popup-signup">Sign up</a>.    </p>
+
+            <div class="form-group">
+                <input type="email" autocomplete="email" required="" value="" class="form-control" id="inputLoginEmail" name="login_name" placeholder="Your e-mail address">
+            </div>
+            <div class="form-group">
+                <input type="password" required="" autocomplete="current-password" class="form-control" id="inputLoginPassword" name="password" placeholder="Your password">
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" name="remember" value="1"> Remember me        </label>
+            </div>
+                <div class="platform-form-btn">
+                <button type="submit" class="btn btn-primary btn-lg btn-mobile-large">
+                    login        </button>
+            </div>
+            <div class="form-help text-center">
+                <a href="#" class="btn-lost popup-lostpassword">
+                    Forgotten password        </a>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>
+{% endblock %}

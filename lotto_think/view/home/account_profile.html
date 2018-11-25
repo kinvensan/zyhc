@@ -1,0 +1,125 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+{% import "./inc/inner_nav.html" as innerNav %}
+{{innerNav.account(1)}}
+<div class="main-width content-width">
+        <div class="content-box">
+            <section class="page-content myaccount-section">
+                <div class="myaccount-inside">
+                    <article class="page">
+                        <h1 class="account">Account - Edit profile</h1>
+                    </article>
+                    <div class="myaccount-content">
+                        <div class="myaccount-data myaccount-details">
+            <form class="platform-form platform-form-profile" autocomplete="off" method="post" action="/account/profile">
+                <input name="lotto_csrf_token" value="a81721d4b32e1d7a7c90bbaa96752efea3022a160850a3b9458d16a9fb1fbacd5aca8cdc5aa19d547355460b7d0aff40eb56487cfe56a52136b51665c9545964" type="hidden" id="form_lotto_csrf_token">      <div class="platform-form-profile-side-left">
+                <div class="platform-form-profile-group">
+                    <div class="form-group">
+                        <label for="inputUserName">User Name:</label>
+                        <input type="text" value="{{account.user_name}}" class="form-control" id="inputUserName" name="user_name">
+                    </div>
+                </div>
+                <div class="platform-form-profile-group">
+                    <div class="form-group">
+                        <label for="inputNickName">Nick Name:</label>
+                        <input type="text" value="{{account.nick_name}}" class="form-control" id="inputNickName" name="nick_name">
+                    </div>
+                </div>
+                <div class="platform-form-profile-group">
+                    <div class="form-group">
+                        <label for="introduction">Introduction:</label>
+                        <input type="text" value="{{account.introduction}}" class="form-control" id="inputIntroduction" name="introduction">
+                    </div>
+                </div>
+                <div class="platform-form-profile-group">
+                    <label for="inputPhone">Phone:</label>
+                    <input type="text" value="{{account.telephone}}" class="form-control" id="inputPhone" name="telephone">
+                </div>
+            </div>
+            <div class="platform-form-profile-side-right">
+                <div class="platform-form-profile-group">
+                    <div class="form-group">
+                        <label for="inputCountry">Country:</label>
+                        {% include './inc/select_country.html' %}
+                    </div>
+                </div>
+                <div class="platform-form-profile-group">
+                    <div class="form-group">
+                        <label for="inputTimezone">Time Zone:</label>
+                        {% include "./inc/select_timezone.html" %}
+                    </div>
+                </div>
+                <div class="platform-form-profile-group">
+                    <div class="form-group">
+                        <label for="inputAddress">Address:</label>
+                        <input type="text" value="{{account.address}}" class="form-control" id="inputAddress" name="address">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="clearfix">
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary btn-lg platform-form-button-margin btn-mobile-large">save changes</button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            </form>
+            <hr>
+            <form class="platform-form platform-form-profile" autocomplete="off" method="post" action="/account/changemail">
+                <div class="platform-form-profile-side-left">
+                    <a href="#" class="lotto-toggle myaccount-toggle-profile" data-togglename="Click here to cancel the e-mail change">Change e-mail</a>
+                    <div class="platform-form-profile-group hidden-normal">
+                        <div class="platform-form-profile-subgroup3">
+                            <div class="form-group">
+                                <label for="inputEmail">
+                                    E-mail:
+                                </label>
+                                <input type="email" required="" value="{{account.email}}" class="form-control" id="inputEmail" name="email">
+                            </div>
+                        </div>
+                        <div class="platform-form-profile-subgroup4">
+                            <label for="inputNEmail">New e-mail:</label>
+                            <input type="email" value="" class="form-control" id="inputNEmail" name="nemail">
+                        </div>
+                        <div class="clearfix"></div>
+                        <p class="help-block">
+                            We will send you an optional activation e-mail. Please activate your e-mail for better user experience.                            
+                        </p>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-lg platform-form-button-margin btn-mobile-large">change email</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form class="platform-form platform-form-profile" autocomplete="off" method="post" action="/account/resetpassword">
+                <div class="platform-form-profile-side-right">
+                    <a href="#" class="lotto-toggle myaccount-toggle-profile" data-togglename="Click here to cancel the password change">Change password</a>
+                    <div class="platform-form-profile-group hidden-normal">
+                        <div class="form-group">
+                        <div class="platform-form-profile-subgroup5">
+                            <label for="inputCurrentPassword">Old password:</label>
+                            <input type="password" value="" class="form-control" id="inputCurrentPassword" name="password">
+                        </div>
+                        <div class="platform-form-profile-subgroup5">
+                            <label for="inputNewPassword">New password:</label>
+                            <input type="password" value="" class="form-control" id="inputNewPassword" name="npassword">  
+                        </div>
+                        <div class="platform-form-profile-subgroup5">
+                            <label for="inputRNewPassword">Repeat password:</label>
+                            <input type="password" value="" class="form-control" id="inputRNewPassword" name="rpassword">
+                        </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-lg platform-form-button-margin btn-mobile-large">reset password</button>
+                        </div>
+                    </div>
+                </div>
+            </form>      
+</div>
+<div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div></section>
+        </div>
+    </div>
+{% endblock %}

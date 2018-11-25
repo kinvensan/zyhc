@@ -1,0 +1,119 @@
+{% extends "./inc/base.html" %}
+
+{% block content %}
+<div class="main-width content-width">
+	<div class="content-box">
+        <div class="platform-alert platform-alert-success">
+            <div class="main-width">
+                <span class="fa fa-check-circle"></span> The ticket has been added to your order!
+            </div>
+        </div>		
+        <table class="table table-order">
+			<tbody>
+			{% for item in shopcart.orders -%}
+				<tr>
+					<td>
+						<div class="order-summary-image">
+							<img src="{{item.lottery_picture}}" alt="{{item.lottery_title}}">
+						</div>
+					</td>
+					<td>
+						<div class="order-summary-content">
+							<span class="order-summary-content-header">
+								<a href="/play/{{item.lottery_name}}">{{item.lottery_title}}</a> ticket</span>
+							</span>
+							<span class="order-summary-content-desc">
+								<br />
+								{% if not item.ticket_bets == 0 %} Bets size: <div class="ticket-line-number">{{"L" if item.ticket_bets==1 else "R"}}</div>{% endif %}
+								{% if not item.ticket_number == 0 %} Bets numer: <div class="ticket-line-bnumber">{{item.ticket_number}}</div>{% endif %}
+							</span><br>
+								Draw event on {{__.moment(item.draw_at*1000).format('lll')}}		
+						</div>
+					</td>
+					<td class="text-right col-amount">${{item.ticket_amount}}</td>
+					<td class="text-right order-action">
+						<a href="#" data-aback="/shopcart" data-apost="/shopcart/remove" data-ticketId="{{item.id if user else item.ticket_id}}" class="tooltip tooltip-bottom widget-shopcart-remove-action" data-tooltip="Remove">
+							<span class="fa fa-times"></span>
+						</a>
+					</td>
+				</tr>
+			{%- endfor %}
+			</tbody>
+		</table>
+		<div class="clearfix"></div>
+        <div class="order-buttons">
+            <div class="pull-left">
+                <a href="/play/" class="btn btn-secondary">add more tickets</a>
+            </div>
+            <div class="pull-right">
+				<table>
+				<tr style="vertical-align: top;">
+				{% if user and shopcart.amount > 0 %}
+				<td>
+                <span class="order-sum">Total Sum: <span>${{shopcart.amount}}</span></span>
+				<div><a id="banlance-button-pay" href="#" data-apost="/balance/pay" class="btn btn-primary" data-balance="{{user.balance}}" data-amount="{{shopcart.amount}}">pay with balance</a></div>
+				</td><td>
+				<div id="paypal-button-container"></div>
+				</td>
+				{% else %}
+				<td>
+                <span class="order-sum">Total Sum: <span>${{shopcart.amount}}</span></span>
+				</td>
+				<a href="/shopcart/paylogin" class="btn btn-primary popup-login popup-order" data-minorder="$0.00">pay now</a>
+				</td>
+				{% endif %}
+				</tr>
+				</table>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+	<form method="post" action="/shopcart/remove" autocomplete="off" id="shopcart-remove-form">
+		<input type="hidden" autocomplete="nope" name="ticket_id" value="">
+	</form>
+</div>
+{% endblock %}
+{% block paypalscript %}
+{% if user %}
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+<script>
+paypal.Button.render({
+	// Set your environment
+	env: 'sandbox', // sandbox | production
+
+	// Specify the style of the button
+	style: {
+		layout: 'vertical', // horizontal | vertical
+		size: 'medium', // medium | large | responsive
+		shape: 'rect', // pill | rect
+		color: 'gold' // gold | blue | silver | white | black
+	},
+
+	payment: function(data, actions) {
+		return actions.request.post('/pay/create')
+		.then(function(res) {
+			if(res.errno === 0) {
+				return res.data.id;
+			}
+			window.jQuery.growl.error(res.errmsg);
+		});
+	},
+
+	onAuthorize: function(data, actions) {
+		return actions.request.post('/pay/execute', {
+		paymentID: data.paymentID,
+		payerID: data.payerID
+		})
+		.then(function(res) {
+			// 3. Show the buyer a confirmation message.
+			if(res.errno === 0){
+				window.location.href="/";
+			} else {
+				window.jQuery.growl.error(res.errmsg);
+			}
+		});
+	}
+	}, '#paypal-button-container');
+</script>
+{% endif %}
+{% endblock %}

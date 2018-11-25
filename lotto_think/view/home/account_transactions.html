@@ -1,0 +1,68 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+{% import "./inc/inner_nav.html" as innerNav %}
+{{innerNav.account(3)}}
+<div class="main-width content-width">
+    <div class="content-box">
+        <section class="page-content myaccount-section">
+            <div class="myaccount-inside">
+                <article class="page"><h1 class="account">Account - My transactions</h1>      
+                    <div class="myaccount-filter">
+                        <form method="get" action=".">
+                            <label for="myaccount-filter-select" class="table-sort-label hidden-normal">
+                                Show: 
+                            </label>
+                            <select id="myaccount-filter-select" class="myaccount-filter-select" name="filter[status]">
+                                <option value="a" selected="selected">
+                                    show all                                            </option>
+                                <option value="1">
+                                    show approved                                            </option>
+                                <option value="0">
+                                    show pending                                            </option>
+                                <option value="2">
+                                    show failure                                            </option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                </article>
+                <div class="myaccount-content">
+                    <div class="myaccount-data myaccount-details">
+                        <div class="myaccount-balance pull-left">Account balance: <span>€0.00</span></div>
+                        <a href="/account/withdrawal" class="btn btn-primary btn-withdrawal pull-left {{disabled if user.balance <10 else ""}}">withdrawal</a>
+                        <div class="clearfix"></div>
+                        {% if records and records.length>0 %}
+                        <table class="table table-results table-hover tablesorter tablesorter-default" id="trans-table" role="grid">
+                        <thead>
+                            <tr role="row" class="tablesorter-headerRow">
+                                <th data-column="0" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" ><div class="tablesorter-header-inner">ID</div></th>
+                                <th data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" ><div class="tablesorter-header-inner">&nbsp;</div></th>
+                                <th data-column="2" class="tablesorter-header tablesorter-headerDesc" tabindex="0" scope="col" role="columnheader" ><div class="tablesorter-header-inner">Date</div></th>
+                                <th data-column="3" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader"><div class="tablesorter-header-inner">Amount</div></th>
+                                <th data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader"><div class="tablesorter-header-inner">Memo</div></th>
+                            </tr>
+                        </thead>
+                        <tbody aria-live="polite" aria-relevant="all">
+                            {% for item in records%}
+                            <tr role="row">
+                                <td class="results-lottery">{{item.id}}</td>
+                                <td class="results-lottery">&nbsp;</td>
+                                <td class="results-last">{{__.moment(item.updated_at).format('lll')}}</td>
+                                <td class="results-lottery">{{'+' if item.action==1 else '-'}}{{item.amount}} $</td>
+                                <td class="results-last">{{item.memo}}</td>
+                            </tr>
+                            {% endfor%}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>No transactions.</p>
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+    </div>
+</div>
+{% endblock %}

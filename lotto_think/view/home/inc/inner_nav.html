@@ -1,0 +1,52 @@
+{% macro play(active) %}
+<div class="main-width relative">
+    <div class="content-nav-wrapper mobile-only">
+        <select class="content-nav">
+            <option selected="" value="/play/{{lottery.name}}">Play {{lottery.title}}</option>
+            <option value="/results/{{lottery.name}}">{{lottery.title}} Results</option>
+            <option value="/lotteries/{{lottery.name}}">{{lottery.title}} Information</option>
+            <option value="/news/{{lottery.name}}/">{{lottery.title}} News</option>
+        </select>
+    </div>
+    <nav class="content-nav mobile-hide">
+        <ul>
+            <li class="{{'content-nav-active' if active==1 else '' }}"><a href="/play/{{lottery.name}}">Play {{lottery.title}}</a></li>
+            <li class="{{'content-nav-active' if active==2 else '' }}"><a href="/results/{{lottery.name}}">{{lottery.title}} Results</a></li>
+            <li class="{{'content-nav-active' if active==3 else '' }}"><a href="/lotteries/{{lottery.name}}">{{lottery.title}} Information</a></li>
+            <li class="{{'content-nav-active' if active==4 else '' }}"><a href="/news/{{lottery.name}}/">{{lottery.title}} News</a></li>
+            <div class="clearfix"></div>
+        </ul>
+    </nav>
+</div>
+{% endmacro %}
+{% macro account(active) %}
+<div class="main-width">
+    <div class="content-nav-wrapper mobile-only">
+        <select id="myaccount-mobile-nav" class="content-nav">
+            <option value="0" selected="selected">choose        </option>
+            <option value="/account/" selected="selected">My details        </option>
+            <option value="/account/tickets">My tickets        </option>
+            <option value="/account/transactions">My transactions        </option>
+            <option value="/account/payments">My payment methods        </option>
+        </select>
+</div>
+<nav class="content-nav myaccount-nav mobile-hide">
+	<ul>
+		<li class="{{'content-nav-active' if active==1 else ''}}">
+            <a href="/account/"><span class="fa fa-user-circle-o" aria-hidden="true"></span> My details            </a>
+        </li>
+        <li class="{{'content-nav-active' if active==2 else ''}}">
+            <a href="/account/tickets"><span class="fa fa-ticket" aria-hidden="true"></span> My tickets            </a>
+        </li>
+		<li class="{{'content-nav-active' if active==3 else ''}}">
+            <a href="/account/transactions"><span class="fa fa-money" aria-hidden="true"></span> My transactions            </a>
+        </li>
+		<li class="{{'content-nav-active' if active==4 else ''}}">
+            <a href="/account/payments"><span class="fa fa-credit-card" aria-hidden="true"></span>My payment methods            </a>
+        </li>
+		<div class="clearfix"></div>
+	</ul>
+</nav>
+
+    </div>
+{% endmacro %}
