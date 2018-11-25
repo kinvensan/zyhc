@@ -9,4 +9,8 @@ module.exports = class extends Base {
   async infoAction() {
     await this.service('crawl_infomation').start();
   }
+
+  errorAction() {
+    this.ctx.throw('error', 500);
+  }
 };

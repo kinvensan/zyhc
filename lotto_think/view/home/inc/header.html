@@ -1,5 +1,5 @@
 <div class="main-width">
-	<div class="header-logo"><a href="/" rel="home"><img width="269" height="53" alt="LottoPark" src="https://content.lottopark.com/uploads/sites/2/logo.png" title="LottoPark &#8211; The world&#039;s biggest lotteries online!"></a></div>
+	<div class="header-logo"><a href="/" rel="home"><img width="160" height="51" alt="LottoPark" src="/static/image/logo.png" title="Lotto &#8211; The world&#039;s lotteries online!"></a></div>
 	<div class="mobile-menu mobile-only pull-right">
 		<a href="#" class="mobile-menu-trigger">
 			<span class="fa fa-bars" title="Menu"></span>
@@ -11,9 +11,9 @@
 			<div class="user-info-area menu-trigger">
 				<a href="/account/" class="user-info-link">
 					<span class="fa fa-user-circle-o" aria-hidden="true"></span>
-					<span class="user-name">{{ user.email }}</span>
+					<span class="user-name">{{ user.nick_name }}</span>
 					<span class="fa fa-chevron-down" aria-hidden="true"></span>
-					<span class="user-balance">€0.00</span>
+					<span class="user-balance">${{user.balance}}</span>
 				</a>
 			</div>
 			<div class="menu-wrapper" style="display: none;">
@@ -37,7 +37,7 @@
 						</a>
 					</div>
 					<div class="user-menu-item-container">
-						<a href="/deposit/" class="btn btn-primary">Deposit</a>								
+						<a href="/withdrawal" class="btn btn-primary">withdrawal</a>								
 						<a href="/user/logout/" class="logout pull-right">log out</a>
 						<div class="clearfix"></div>
 					</div>
@@ -50,10 +50,10 @@
 		{% endif %}
 		<div class="pull-left order-info-area">
 			<div class="order-info menu-trigger order-info-notempty">
-				<a href="/orders" class="user-info-link">
-					<span class="fa fa-shopping-cart" aria-hidden="true"></span> <span class="order-count">{{orderTotal.count}}</span>
+				<a href="/shopcart" class="user-info-link">
+					<span class="fa fa-shopping-cart" aria-hidden="true"></span> <span class="order-count">{{shopcart.count}}</span>
 					<div class="order-info-desc pull-right">
-						<span class="order-info-amount">€{{orderTotal.amount}}</span><br>
+						<span class="order-info-amount">${{shopcart.amount}}</span><br>
 						<span class="order-info-link">checkout</span>
 					</div>
 				</a>

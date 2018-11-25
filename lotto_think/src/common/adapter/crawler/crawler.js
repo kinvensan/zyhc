@@ -4,7 +4,7 @@ const helper = require('think-helper');
 const EventEmitter = require('events').EventEmitter;
 const iconvLite = require('iconv-lite');
 const cheerio = require('cheerio');
-const request = require('superagent');
+const request = require('axios');
 module.exports = class extends EventEmitter {
   constructor(config) {
     const defaultOptions = {

@@ -1,25 +1,6 @@
 {% extends "./inc/base.html" %}
 
 {% block content %}
-<div class="main-width hidden">
-    <div class="content-nav-wrapper mobile-only">
-        <select class="content-nav">
-            <option selected="" value="/play/">Play</option>
-            <option value="/results/">Results</option>
-            <option value="/lotteries/">Information</option>
-            <option value="/news/">News</option>
-        </select>
-    </div>
-    <nav class="content-nav mobile-hide">
-        <ul>
-            <li class="content-nav-active"><a href="/play/">Play</a></li>
-            <li><a href="/results/">Results</a></li>
-            <li><a href="/lotteries/">Information</a></li>
-            <li><a href="/news/">News</a></li>
-            <div class="clearfix"></div>
-        </ul>
-    </nav>
-</div>
 <div id="lotto_platform_widget_list-3" class="widget widget_lotto_platform_widget_list">
     <div class="main-width">
 	    <div class="widget-list-content-grid widget-list-type2 widget-list-display2">
@@ -31,13 +12,10 @@
                     <img width="200" height="212" src="{{ lottery.picture }}" alt="{{ lottery.title }}">
                 </div>
                 <h2>{{ lottery.title }}</h2>
-                <div class="widget-list-hamount"><span class="tooltip tooltip-bottom local-amount" data-tooltip="€{{lottery.jackpot_amount}}"><span class="currency-front">CN¥</span> 710 m</span></div>
-                <time class="widget-list-ticket-countdown simple-countdown" datetime="{{lottery.draw_at}}">
-                    <span class="widget-list-ticket-countdown-before">
-                        <span class="fa fa-clock-o" aria-hidden="true"></span> 
-                        {{lottery.draw_at | momentFromNow }}                             
-                    </span>
-                </time>
+                <div class="widget-list-hamount">
+                    <span class="fa fa-clock-o" aria-hidden="true"></span> 
+                    <time class="simple-countdown" data-datetime="{{lottery.draw_at}}"></time>
+                </div>
                 <div class="widget-list-button-container">
                     <a href="/play/{{ lottery.name }}" class="btn btn-primary widget-list-button">play now</a>
                 </div>

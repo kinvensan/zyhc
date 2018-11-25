@@ -1,6 +1,6 @@
 'use strict';
 const EventEmitter = require('events').EventEmitter;
-const request = require('superagent');
+const request = require('axios');
 const cheerio = require('cheerio');
 class Dowloader extends EventEmitter {
   preRequest() {}

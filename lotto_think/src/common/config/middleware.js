@@ -1,6 +1,6 @@
 const path = require('path');
 const isDev = think.env === 'development';
-
+const cors = require('koa2-cors');
 module.exports = [
   {
     handle: 'meta',
@@ -22,6 +22,13 @@ module.exports = [
     enable: !think.isCli,
     options: {
       debug: isDev
+    }
+  },
+  {
+    handle: cors,
+    option: {
+      origin: '*',
+      allowMethods: ['GET', 'POST', 'DELETE']
     }
   },
   {

@@ -22,8 +22,8 @@ module.exports = class extends Base {
     }
     const LotteryModel = this.model('lottery');
     const lottery = await LotteryModel.where({name}).find();
-    const ResultsModel = this.model('result');
-    const result = await ResultsModel.where({name}).find();
+    const ResultsModel = this.model('results');
+    const result = await ResultsModel.where({lottery_name: name}).find();
     if (!think.isEmpty(lottery)) {
       this.assign('lottery', lottery);
     }

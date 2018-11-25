@@ -1,6 +1,7 @@
 {% extends "./inc/base.html" %}
 {% block content %}
-{% include "./inc/play_nav.html" %}
+{% import "./inc/inner_nav.html" as innerNav %}
+{{innerNav.play(2)}}
 <div class="main-width content-width">
         <div class="content-box">
             <div class="content-box-main">

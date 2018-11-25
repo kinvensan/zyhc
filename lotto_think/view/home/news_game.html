@@ -1,6 +1,7 @@
 {% extends "./inc/base.html" %}
 {% block content %}
-{% include "./inc/play_nav.html" %}
+{% import "./inc/inner_nav.html" as innerNav %}
+{{innerNav.play(4)}}
 <div class="main-width">
 	<section class="latest-news latest-news-columns-2">
 		

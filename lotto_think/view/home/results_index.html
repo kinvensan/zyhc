@@ -40,7 +40,7 @@
 							<td class="results-image"><i class="sprite-lang {{__.jed.dgettext('csslang',result.country)}}"></i>{{result.country}}</td>
 							<td class="results-lottery-image"><img src="{{result.picture}}" alt=""></td>
 							<td class="results-lottery"><a href="/results/{{result.lottery_name}}">{{result.lottery_title}}</a></td>
-							<td class="results-last" data-text="{{result.last_draw_at}}">{{__.moment(result.last_draw_at*1000).format('L')}}</td>
+							<td class="results-last" data-text="{{result.last_draw_at}}">{{__.moment(result.last_draw_at*1000).format('lll')}}</td>
 							<td><div class="ticket-line">
 							{%for n in result.result.n -%}
 								<div class="ticket-line-number">{{n}}</div>

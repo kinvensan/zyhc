@@ -3,7 +3,7 @@ const Base = require('./base.js');
 module.exports = class extends Base {
   async indexAction() {
     const LotteryModel = this.model('lottery');
-    const lotteries = await LotteryModel.select();
+    const lotteries = await LotteryModel.querySortByDraw();
     this.assign('lotteries', lotteries);
     return this.display();
   }
@@ -15,12 +15,12 @@ module.exports = class extends Base {
     }
     const LotteryModel = this.model('lottery');
     const ArticleModel = this.model('article');
-    const lottery = await LotteryModel.where({name}).find();
+    const lottery = await LotteryModel.findByName(name);
     if (!think.isEmpty(lottery)) {
       this.assign('lottery', lottery);
-      const article = await ArticleModel.where({'catalog_path': '/play/' + name}).find();
+      const article = await ArticleModel.findByCatalog(['/play/', name].join(''));
       this.assign('article', article);
-      return this.display('home/' + lottery.template);
+      return this.display('home/play_game');
     }
     return this.redirect('/play');
   }

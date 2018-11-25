@@ -3,20 +3,6 @@
 {% block content %}
 <div class="main-width content-width">
 	<div class="content-box">
-        <section class="page-content">
-            <article class="page">
-                <div class="order-lottery-quick-pick-container pull-right">
-                    <div class="order-lottery-quick-pick-label pull-left">Add Quick Pick ticket:</div>
-                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/eurojackpot/1">Eurojackpot</a></div>
-                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/euromillions/1">EuroMillions</a></div>
-                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/superenalotto/1">SuperEnalotto</a></div>
-                    <div class="order-lottery-quick-pick pull-left"><a href="/order/quickpick/powerball/1">Powerball</a></div>
-                    <div class="clearfix"></div>
-                </div>
-                <h1 class="header-order" id="your-order">Your order</h1>
-                <div class="clearfix"></div>
-            </article>
-        </section>
         <div class="platform-alert platform-alert-success">
             <div class="main-width">
                 <span class="fa fa-check-circle"></span> The ticket has been added to your order!
@@ -66,10 +52,55 @@
             </div>
             <div class="pull-right">
                 <span class="order-sum">Total Sum: <span>€{{orderTotal.amount}}</span></span>
-                <a href="/orders/#payment" class="btn btn-primary popup-login popup-order" data-minorder="€0.00">pay now</a>
+				{% if user and  orderTotal.amount > 0 %}
+				<div id="paypal-button-container"></div>
+				{% else %}
+				<a href="/user/login?rurl=/orders" class="btn btn-primary popup-login popup-order" data-minorder="€0.00">pay now</a>
+				{% endif %}
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
 </div>
+{% endblock %}
+{% block paypalscript %}
+{% if user %}
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+<script>
+paypal.Button.render({
+	// Set your environment
+	env: 'sandbox', // sandbox | production
+
+	// Specify the style of the button
+	style: {
+		layout: 'vertical', // horizontal | vertical
+		size: 'medium', // medium | large | responsive
+		shape: 'rect', // pill | rect
+		color: 'gold' // gold | blue | silver | white | black
+	},
+
+	payment: function(data, actions) {
+		return actions.request.post('/pay/create')
+		.then(function(res) {
+		// 3. Return res.id from the response
+			return res.data.id;
+		});
+	},
+
+	onAuthorize: function(data, actions) {
+		return actions.request.post('/pay/execute', {
+		paymentID: data.paymentID,
+		payerID: data.payerID
+		})
+		.then(function(res) {
+			// 3. Show the buyer a confirmation message.
+			if(res.errno == 0){
+				window.location.href="/";
+			}
+			alert('pay success');
+		});
+	}
+	}, '#paypal-button-container');
+</script>
+{% endif %}
 {% endblock %}

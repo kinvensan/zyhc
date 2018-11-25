@@ -19,4 +19,12 @@ module.exports = class extends think.Model {
       return item;
     });
   }
+
+  async querySortByLastDraw() {
+    const results = await this.order('last_draw_at ASC').where({last_flag: 1}).select();
+    return results.map((item) => {
+      item.result = JSON.parse(item.result);
+      return item;
+    });
+  }
 };
