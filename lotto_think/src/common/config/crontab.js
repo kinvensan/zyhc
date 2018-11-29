@@ -1,10 +1,10 @@
 'use strict';
 module.exports = [{
-  cron: '1 */12 * * *',
+  cron: '*/10 * * * *',
   handle: 'crontab/results',
   type: 'one'
 }, {
-  cron: '0 */12 * * *',
+  cron: '*/10 * * * *',
   handle: 'crontab/information',
   type: 'one'
 }];

@@ -23,20 +23,6 @@ jQuery(document).ready(function(p) {
   }, function() {
     p(this).hide();
   }).hide(),
-  p('#inputCountry').change(function(e) {
-    if (p(this).val() != '' && p('#inputPhone').val().length == 0) {
-      var t = p('#inputPrefix option[data-territory="' + p(this).val() + '"]');
-      t.size() && p('#inputPrefix').val(t.slice(0, 1).val());
-    }
-    p(this).val() != '' ? (p('#inputState').prop('disabled', !1),
-    p('#inputState').children().remove(),
-    p('#allRegions').children().each(function(e) {
-      p(this).data('country') != p('#inputCountry').val() && e != 0 || p('#inputState').append(p(this).clone());
-    }),
-    p('#inputState').children().length <= 1 && p('#inputState').prop('disabled', !0)) : (p('#inputState').append(p('#allRegions').children().eq(0)),
-    p('#inputState').prop('disabled', !0),
-    p('#inputState').children().remove());
-  }),
   p('#inputBirthdate').length && p('#inputBirthdate').prop('disabled') == 0) {
     var e = {
       changeMonth: !0,
@@ -89,7 +75,13 @@ jQuery(document).ready(function(p) {
   p('time.simple-countdown').each(function() {
     var time = parseInt(p(this).data('datetime')) * 1000;
     p(this).countdown(time, function(event) {
-      p(this).html(['<span>', (time - Date.now() > 0) ? event.strftime('%-d days %-H h %M min %S sec') : 'expired', '</span>'].join(''));
+      var txt = 'expired';
+      if (time - Date.now() > 1000 * 60 * 60) {
+        txt = event.strftime('%-d days %-H hours');
+      } else if (time - Date.now() > 0) {
+        txt = event.strftime('%M min %S sec');
+      }
+      p(this).html('<span>' + txt + '</span>');
     });
   });
   p('.widget-ticket-bets').each(function() {

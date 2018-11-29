@@ -19,4 +19,8 @@ module.exports = class extends BaseModel {
       return this.where({orders_id: ordersId}).update(orderDetail);
     }
   }
+
+  queryByDrawAt(drawAt) {
+    return this.where({status: 2, draw_at: drawAt}).select();
+  }
 };

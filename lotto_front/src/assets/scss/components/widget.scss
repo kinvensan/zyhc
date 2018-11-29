@@ -1,0 +1,52 @@
+.widget-ticket-numbers{
+    color: #9fa3a8;
+    transition: .5s color;
+    font-size: 14px;
+    a {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      line-height: 22px;
+      margin: 1px;
+      font-weight: 700;
+      box-sizing: border-box;
+      text-align: center;
+      opacity: 1;
+      border: 1px solid #cfd2d4;
+      color: inherit;
+    }
+    a:hover, a.checked {
+      color: #ffffff;
+      border-color: #41934c;
+      background-color: #41934c;
+    }
+  }
+  .widget-ticket-bnumbers {
+    color: #9fa3a8;
+    transition: .5s color;
+    font-size: 14px;
+    a {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      box-sizing: border-box;
+      border-radius: 24px;
+      line-height: 22px;
+      margin: 1px;
+      margin-bottom: 1px;
+      font-weight: 700;
+      text-align: center;
+      border: 1px solid #cfd2d4;
+      color: inherit;
+    }
+    a:hover,a.checked {
+      border-color: #fe7104;
+      background-color: #fe7104;
+      color: #ffffff;
+    }
+  }
+
+.widget-card {
+  @include card-container($card-background, $card-font-color, $global-margin, 2px solid #002776, 15px, $card-shadow);
+}

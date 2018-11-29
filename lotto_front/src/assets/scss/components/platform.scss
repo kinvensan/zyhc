@@ -1,0 +1,41 @@
+.logo {
+    width: 160px;
+    height: 51px;
+    background-image: url('../img/logo.png');
+}
+.main-width {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.header {
+    max-width: 1140px;
+    background-color: none;
+    margin: 10px;
+    margin-bottom: 10px;
+}
+.content {
+    max-width: 1140px;
+    background-color: none;
+    margin: 10px;
+    margin-bottom: 10px;
+}
+.main-menu {
+    background-image: url('../img/mainmenu_bg.png') repeat-x;
+    background-color: #002776;
+    border: 2px solid #002776;
+    border-radius: 15px;
+}
+
+.slider-wrap {
+    background-color: #41934c;
+    background-image: url('../img/sliderbg.png');
+}
+
+
+.sans {
+    color: white;
+    font-size: 1.6875em;
+    font-weight: bold;
+
+}
