@@ -28,7 +28,7 @@ module.exports = class extends think.Model {
     });
   }
 
-  queryByLastDate(winAt) {
+  queryLastDrawAt(winAt) {
     return this.where({last_flag: 1, last_draw_at: ['>', winAt]}).select();
   }
 };

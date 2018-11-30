@@ -1,7 +1,8 @@
 'use strict';
 const axios = require('axios');
 
-const PAYPAL_API = 'https://api.sandbox.paypal.com';
+// const PAYPAL_API = 'https://api.sandbox.paypal.com'; // for sandbox
+const PAYPAL_API = 'https://api.paypal.com'; // for product
 const CLIENT = 'Ad_G2xWoRbKjL_pS7G7uO9OW3SPxO1hV5QJ5T300mizAv0Df-ga7SuidcfojZM_BQB66BBS5BfkBdu2B';
 const SECRET = 'EKPNAZgO1mbUCBfPqN40T2Bj0QaHa60HYEOuxkP-TMk40uOSVQCGDR0Z2DuQjYfAa6sgGj-NiHkkP-Aa';
 
@@ -24,8 +25,8 @@ module.exports = class extends think.Service {
             }
           }],
           redirect_urls: {
-            return_url: '/shopcart',
-            cancel_url: '/shopcart'
+            return_url: 'http://www.lotterywd.com/shopcart',
+            cancel_url: 'http://www.lotterywd.com/shopcart'
           }
         },
         baseURL: PAYPAL_API,

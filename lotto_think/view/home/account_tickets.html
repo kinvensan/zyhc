@@ -42,8 +42,8 @@
                                     {% for ticket in item.tickets %}
                                     <div class="ticket-line">
                                         <span> {{ticket.lottery_title}}</span>
-                                        {% if not ticket.ticket_bets == 0 %} Bets size: <span class="ticket-line-number">{{"L" if ticket.ticket_bets==1 else "R"}}</span>{% endif %}
-                                        {% if not ticket.ticket_number == 0 %} Bets numer: <span class="ticket-line-bnumber">{{ticket.ticket_number}}</span>{% endif %}
+                                        Bets ball: {% if not ticket.ticket_bets == 0 %}<span class="ticket-line-number">{{ticket.ticket_bets}}</span>{% endif %}
+                                        {% if not ticket.ticket_number == 0 %}<span class="ticket-line-bnumber">{{ticket.ticket_number}}</span>{% endif %}
                                         <span> Amount: $ {{ticket.ticket_amount}}</span>
                                     </div>
                                     {% endfor %}			

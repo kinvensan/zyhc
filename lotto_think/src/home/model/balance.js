@@ -13,4 +13,16 @@ module.exports = class extends BaseModel {
       return this.where({id: balanceId}).update(balance);
     }
   }
+
+  incrementUserBalance(balance) {
+    if (!think.isEmpty(balance)) {
+      return this.where({user_id: balance.user_id}).increment({amount: balance.amount});
+    }
+  }
+
+  createBalance(balance) {
+    if (!think.isEmpty(balance)) {
+      return this.where({user_id: balance.user_id}).thenAdd(balance);
+    }
+  }
 };

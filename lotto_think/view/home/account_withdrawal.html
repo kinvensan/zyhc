@@ -1,12 +1,12 @@
 {% extends "./inc/base.html" %}
 {% block content %}
 {% import "./inc/inner_nav.html" as innerNav %}
-{{innerNav.account(3)}}
+{{innerNav.account(4)}}
 <div class="main-width content-width">
     <div class="content-box">
         <section class="page-content myaccount-section">
             <div class="myaccount-inside">
-                <article class="page"><h1 class="account">Account - My transactions</h1>      
+                <article class="page"><h1 class="account">Account - My Withdrawal Apply</h1>      
                     <div class="myaccount-filter">
                         <form method="get" action=".">
                             <label for="myaccount-filter-select" class="table-sort-label hidden-normal">
@@ -31,25 +31,25 @@
                         <div class="myaccount-balance pull-left">Account balance: <span>€{{user.balance}}</span></div>
                         <a href="/withdrawal/apply" class="btn btn-primary btn-withdrawal pull-left {{disabled if user.balance <10 else ""}}">withdrawal</a>
                         <div class="clearfix"></div>
-                        {% if records and records.length>0 %}
+                        {% if withdrawals and withdrawals.length>0 %}
                         <table class="table table-results table-hover tablesorter tablesorter-default" id="trans-table" role="grid">
                         <thead>
                             <tr role="row" class="tablesorter-headerRow">
                                 <th data-column="0" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader" ><div class="tablesorter-header-inner">ID</div></th>
-                                <th data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" ><div class="tablesorter-header-inner">&nbsp;</div></th>
-                                <th data-column="2" class="tablesorter-header tablesorter-headerDesc" tabindex="0" scope="col" role="columnheader" ><div class="tablesorter-header-inner">Date</div></th>
-                                <th data-column="3" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader"><div class="tablesorter-header-inner">Amount</div></th>
-                                <th data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader"><div class="tablesorter-header-inner">Memo</div></th>
+                                <th data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" ><div class="tablesorter-header-inner">Date</div></th>
+                                <th data-column="2" class="tablesorter-header tablesorter-headerDesc" tabindex="0" scope="col" role="columnheader" ><div class="tablesorter-header-inner">Amount</div></th>
+                                <th data-column="3" class="tablesorter-header sorter-false tablesorter-headerUnSorted" scope="col" role="columnheader"><div class="tablesorter-header-inner">fee</div></th>
+                                <th data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader"><div class="tablesorter-header-inner">status</div></th>
                             </tr>
                         </thead>
                         <tbody aria-live="polite" aria-relevant="all">
-                            {% for item in records%}
+                            {% for item in withdrawals%}
                             <tr role="row">
                                 <td class="results-lottery">{{item.id}}</td>
-                                <td class="results-lottery">&nbsp;</td>
-                                <td class="results-last">{{__.moment(item.updated_at).format('lll')}}</td>
-                                <td class="results-lottery">{{'+' if item.action==1 else '-'}}{{item.amount}} $</td>
-                                <td class="results-last">{{item.memo}}</td>
+                                <td class="results-lottery">{{__.moment(item.updated_at).format('lll')}}</td>
+                                <td class="results-lottery">${{item.amount}}</td>
+                                <td class="results-lottery">${{item.fee}}</td>
+                                <td class="results-last">{{'pending' if item.status==1 else 'approved'}}</td>
                             </tr>
                             {% endfor%}
                         </tbody>

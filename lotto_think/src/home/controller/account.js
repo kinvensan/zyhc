@@ -94,4 +94,12 @@ module.exports = class extends Base {
     this.assign('records', records);
     return this.display();
   }
+
+  async withdrawalAction() {
+    const user = await this.session('user');
+    const WithdrawalModel = this.model('withdrawal');
+    const withdrawals = await WithdrawalModel.queryByUserId(user.id);
+    this.assign('withdrawals', withdrawals);
+    return this.display();
+  }
 };

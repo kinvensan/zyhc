@@ -24,8 +24,8 @@
 							</span>
 							<span class="order-summary-content-desc">
 								<br />
-								{% if not item.ticket_bets == 0 %} Bets size: <div class="ticket-line-number">{{"L" if item.ticket_bets==1 else "R"}}</div>{% endif %}
-								{% if not item.ticket_number == 0 %} Bets numer: <div class="ticket-line-bnumber">{{item.ticket_number}}</div>{% endif %}
+								Bets ball: {% if not item.ticket_bets == 0 %} <div class="ticket-line-bnumber">{{item.ticket_bets}}</div>{% endif %}
+								{% if not item.ticket_number == 0 %}<div class="ticket-line-number">{{item.ticket_number}}</div>{% endif %}
 							</span><br>
 								Draw event on {{__.moment(item.draw_at*1000).format('lll')}}		
 						</div>
@@ -79,7 +79,7 @@
 <script>
 paypal.Button.render({
 	// Set your environment
-	env: 'sandbox', // sandbox | production
+	env: 'production', // sandbox | production
 
 	// Specify the style of the button
 	style: {

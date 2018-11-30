@@ -84,19 +84,31 @@ jQuery(document).ready(function(p) {
       p(this).html('<span>' + txt + '</span>');
     });
   });
-  p('.widget-ticket-bets').each(function() {
-    p(this).click(function(e) {
-      e.preventDefault();
-      var t = p(this);
-      p('#ticket_bets').val(t.data('bets'));
-      p('.widget-ticket-bets').each(function(i, m) {
-        var n = p(m);
-        if (n.hasClass('btn-secondary')) {
-          n.toggleClass('btn-secondary');
-        }
-      });
-      t.toggleClass('btn-secondary');
-    });
+  p('.widget-ticket-bets').delegate('div > a', 'click', function(event) {
+    event.preventDefault();
+    var t = p('.widget-ticket-bets');
+    t.find('div > a.checked').toggleClass('checked');
+    p(this).toggleClass('checked');
+    var num = p(this).data('n') ? ['n', p(this).data('n')].join('_') : ['b', p(this).data('b')].join('_');
+    t.data('checked', num);
+  });
+  p('#widget-ticket-form').on('submit', function() {
+    var t = p('.widget-ticket-bets');
+    var num = t.data('checked').split('_');
+    if (p('#ticket_amount').val() === '0') {
+      return false;
+    }
+    if (num.length === 2) {
+      if (num[0] === 'n') {
+        p('#ticket_number').val(num[1]);
+        p('#ticket_bnumber').val(0);
+      } else {
+        p('#ticket_number').val(0);
+        p('#ticket_bnumber').val(num[1]);
+      }
+      return true;
+    }
+    return false;
   });
   p('a.widget-ticket-bets-number').each(function() {
     p(this).click(function(e) {
@@ -110,15 +122,6 @@ jQuery(document).ready(function(p) {
         }
       });
       t.toggleClass('checked');
-    });
-  });
-  p('input.widget-ticket-bets-amount').each(function() {
-    p(this).blur(function(e) {
-      var vl = 0;
-      p('input.widget-ticket-bets-amount').each(function(i, m) {
-        vl += parseInt(p(m).val()) || 0;
-      });
-      p('.widget-ticket-summary-content-total-value > span').html(vl);
     });
   });
   p('a.widget-shopcart-remove-action').each(function() {
@@ -171,5 +174,8 @@ jQuery(document).ready(function(p) {
   p('a.myaccount-toggle-profile').each(function() {
     var r = p;
     p(this).click(function(t) { var e = r(this).text(); t.preventDefault(), r(this).next().fadeToggle('fast'), r(this).text(r(this).data('togglename')), r(this).data('togglename', e) });
+  });
+  p('.deposit-amounts').delegate('div > div', 'click', function(e) {
+    p('#inputAmount').val(p(this).data('amount'));
   });
 });

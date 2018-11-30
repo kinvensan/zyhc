@@ -6,7 +6,7 @@ module.exports = class extends BaseModel {
     return this.addMany(tickets);
   }
   queryByUserId(userId) {
-    return this.where({'user_id': userId, ticket_status: 1}).select();
+    return this.where({'user_id': userId, ticket_status: 1}).order('updated_at desc').select();
   }
   queryOrdersByUserId(userId) {
     return this.join(['lottery on shopcart.lottery_id = lottery.id', 'left join user on user.id=shopcart.user_id']).where({'user_id': userId, ticket_status: 1})
@@ -29,6 +29,12 @@ module.exports = class extends BaseModel {
     if (!think.isEmpty(ids) && !think.isEmpty(shopcart)) {
       shopcart.updated_at = ['EXP', 'NOW()'];
       return this.where({id: ['IN', ids]}).update(shopcart);
+    }
+  }
+
+  createOrders(orders) {
+    if (!think.isEmpty(orders)) {
+      return this.addMany(orders);
     }
   }
 };

@@ -6,6 +6,12 @@ module.exports = class extends BaseModel {
   }
 
   findLastWinAt() {
-    return this.max('win_at');
+    return this.where({user_type: 1}).max('win_at');
+  }
+
+  createWinners(winners) {
+    if (!think.isEmpty(winners)) {
+      return this.addMany(winners);
+    }
   }
 };

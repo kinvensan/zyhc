@@ -27,11 +27,23 @@ module.exports = class extends Base {
       }
       this.cookie('_redirect', null);
       // 把cookie中的购物车放入数据库中
-      const shopcart = this.cookie('_shopcart');
-      if (!(think.isEmpty(shopcart) || think.isEmpty(shopcart.orders))) {
-        const ShopCartModel = this.model('shopcart');
-        await ShopCartModel.addOrders(shopcart.orders);
-        this.cookie('_shopcart', null);
+      let shopcart = this.cookie('_shopcart');
+      if (!think.isEmpty(shopcart)) {
+        shopcart = JSON.parse(shopcart);
+        if (!think.isEmpty(shopcart.orders)) {
+          const ShopCartModel = this.model('shopcart');
+          await ShopCartModel.createOrders(shopcart.orders.map(item => {
+            return {
+              user_id: userLogin.user_id,
+              lottery_id: item.lottery_id,
+              ticket_bets: item.ticket_bets,
+              ticket_amount: item.ticket_amount,
+              ticket_number: item.ticket_number,
+              ticket_status: 1
+            };
+          }));
+          this.cookie('_shopcart', null);
+        }
       }
       return this.redirect(redirectUrl);
     }

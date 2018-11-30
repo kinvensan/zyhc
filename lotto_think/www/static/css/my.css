@@ -180,7 +180,7 @@ div.home-widget-area {
 }
 
 div.content-area {
-    background-color: #e5ebef
+    background-color: #FFA91C
 }
 
 div.content-box {
@@ -322,12 +322,12 @@ header.header-dark .mobile-menu-trigger {
 }
 
 header.header-dark {
-    background-color: #292d38;
+    background-color: #1779ba;
     color: #fff
 }
 
 header.header-dark div.user-info-area {
-    background-color: #292d38;
+    background-color: #fff;
     color: #fff;
     box-shadow: 0 0 0 1px rgba(255,255,255,.2)
 }
@@ -379,7 +379,7 @@ nav#primary-nav {
 }
 
 nav#primary-nav.nav-dark {
-    background-color: #292d38;
+    background-color: #1779ba;
     border-top: 1px solid #3f424c
 }
 
@@ -1067,11 +1067,7 @@ th.sorter-false:hover {
 .widget-ticket-entity.checked .widget-ticket-bnumbers>a,.widget-ticket-entity.checked .widget-ticket-numbers>a,.widget-ticket-entity:hover .widget-ticket-bnumbers,.widget-ticket-entity:hover .widget-ticket-numbers {
     color: #767b82
 }
-.widget-ticket-bets {
-    width: 65px;
-    height: 65px;
-    font-size: 4.6em
-}
+
 .widget-ticket-bnumbers {
     color: #9fa3a8;
     transition: .5s color
@@ -6098,7 +6094,7 @@ div.content-box-smb {
 
 .widget-list-display2 .widget-list-ticket .widget-list-hamount {
     text-align: left;
-    font-size: 2.5em;
+    font-size: 2.1em;
     padding-top: 0;
     line-height: 26px;
     padding-bottom: 43px
@@ -6567,7 +6563,7 @@ table.table-info-detailed th .ticket-line-bnumber,table.table-info-detailed th .
 }
 
 .play-lottery-jackpot-amount {
-    font-size: 2.5em;
+    font-size: 2.1em;
     font-weight: 700;
     line-height: 44px;
     display: block
@@ -6589,7 +6585,7 @@ table.table-info-detailed th .ticket-line-bnumber,table.table-info-detailed th .
 }
 
 .widget-ticket-entity {
-    width: 216px;
+    width: 276px;
     text-align: center;
     padding: 19px 16px;
     box-sizing: border-box;
@@ -7205,6 +7201,18 @@ tr.transaction-shade td:last-of-type,tr.transaction-shade td:nth-of-type(5) {
 .deposit-amount {
     box-sizing: border-box;
     width: 23.5%;
+    margin: 0 1%;
+    text-align: center;
+    line-height: 142px;
+    border-radius: 3px;
+    cursor: pointer;
+    float: left;
+    height: 142px
+}
+
+.deposit-amount-account {
+    box-sizing: border-box;
+    width: 45.5%;
     margin: 0 1%;
     text-align: center;
     line-height: 142px;
@@ -15147,7 +15155,7 @@ div.home-widget-area {
 }
 
 div.content-area {
-    background-color: #f1efec
+    background-color: #FFA91C
 }
 
 div.user-info div.menu-wrapper div.user-menu-content div.user-menu-item span.user-menu-item-link {
@@ -15204,7 +15212,7 @@ div.menu-wrapper>ul>li>a,div.order-info>a.user-info-link,section.user-area div.u
 }
 
 div.user-info-area-active,div.user-info-area-active:hover,header.header-dark div.user-info-area-active,header.header-dark div.user-info-area-active:hover {
-    background-color: #e87800;
+    background-color: #1779ba;
     box-shadow: none;
     border-color: #e87800
 }

@@ -10,7 +10,7 @@ module.exports = class extends BaseModel {
 
   queryByUserId(userId) {
     if (!think.isEmpty(userId)) {
-      return this.where({user_id: userId, status: 2}).select();
+      return this.where({user_id: userId, status: 2}).order('updated_at desc').select();
     }
   }
 };

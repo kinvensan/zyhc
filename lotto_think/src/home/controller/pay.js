@@ -124,6 +124,21 @@ module.exports = class extends Base {
         action: -1,
         memo: 'buy ticket'
       }]);
+      // 进行资金余额操作
+      const BalanceModel = this.model('balance');
+      const balance = await BalanceModel.findByUserId(payment.user_id);
+      if (think.isEmpty(balance) || think.isEmpty(balance.amount)) {
+        await BalanceModel.createBalance({
+          user_id: payment.user_id,
+          amount: 0
+        });
+      } else {
+        await BalanceModel.incrementUserBalance({
+          user_id: payment.user_id,
+          amount: 0
+        });
+      }
+
       return this.success(axiosResult);
     } catch (error) {
       return this.fail(5002, error);

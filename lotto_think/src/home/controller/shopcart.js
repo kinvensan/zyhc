@@ -21,29 +21,20 @@ module.exports = class extends Base {
 
   async saveAction() {
     const user = await this.session('user');
-    const param = this.post();
     const orders = [];
-    // 大小订单
-    if (!(think.isEmpty(this.post('bets-amount')) || parseInt(this.post('bets-amount')) === 0 || parseInt(this.post('ticket_bets')) === 0)) {
-      orders.push({
-        ...param,
-        ticket_bets: parseInt(this.post('ticket_bets')),
-        ticket_amount: parseInt(this.post('bets-amount')),
-        ticket_number: 0,
-        ticket_status: 1
-      });
-    }
+    think.logger.debug(this.post());
     // 号码订单
-    if (!(think.isEmpty(this.post('bets-number-amount')) || parseInt(this.post('bets-number-amount')) === 0 || parseInt(this.post('ticket_number')) === 0)) {
+    if (!(think.isEmpty(this.post('ticket_amount')) || parseInt(this.post('ticket_amount')) === 0 || parseInt(this.post('ticket_amount')) === 0)) {
       orders.push({
-        ...param,
-        ticket_bets: 0,
-        ticket_amount: parseInt(this.post('bets-number-amount')),
+        lottery_id: this.post('lottery_id'),
+        ticket_bets: parseInt(this.post('ticket_bnumber')),
+        ticket_amount: parseInt(this.post('ticket_amount')),
         ticket_number: parseInt(this.post('ticket_number')),
         ticket_status: 1
       });
     }
-    if (think.isEmpty(user)) {
+    think.logger.debug(orders);
+    if (think.isEmpty(user) || think.isEmpty(user.id)) {
       // 未登陆用户进行cookie操作
       const shopcart = this.assign('shopcart');
       const tickets = orders.map(item => {
@@ -91,8 +82,8 @@ module.exports = class extends Base {
   }
 
   async payloginAction() {
-    const shopcart = this.assign('shotcart');
-    if (parseInt(shopcart.amount) === 0) {
+    const shopcart = this.assign('shopcart');
+    if (!think.isEmpty(shopcart) && parseInt(shopcart.amount) === 0) {
       return this.redirect('/shopcart');
     }
     this.cookie('_redirect', '/shopcart');

@@ -10,7 +10,10 @@ module.exports = class extends Base {
     this.assign('results', results);
     const WinnerModel = this.model('winner');
     const winners = await WinnerModel.querySortByLast();
-    this.assign('winners', winners);
+    this.assign('winners', winners.map(item => {
+      item.user_name = '*' + item.user_name.substring(1, 4) + '**';
+      return item;
+    }));
     return this.display();
   }
   error500Action() {

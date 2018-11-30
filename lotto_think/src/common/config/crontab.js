@@ -4,7 +4,11 @@ module.exports = [{
   handle: 'crontab/results',
   type: 'one'
 }, {
-  cron: '*/10 * * * *',
+  cron: '1-59/10 * * * *',
   handle: 'crontab/information',
+  type: 'one'
+}, {
+  cron: '2-59/10 * * * *',
+  handle: 'crontab/winner',
   type: 'one'
 }];

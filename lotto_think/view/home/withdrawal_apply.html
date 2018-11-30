@@ -1,0 +1,40 @@
+{% extends "./inc/base.html" %}
+{% block content %}
+<div class="main-width content-width content-payment">
+    <div class="content-box">
+		<section class="page-content">
+			<article class="page">
+				<h2 id="your-deposit">Balance Withdrawal</h2>
+				<p class="myaccount-balance">Account balance: <span>€{{user.balance}}</p>
+			</article>
+		</section>
+		<div class="deposit-content">
+			<form method="post" action="/withdrawal/apply" class="platform-form payment-form" autocomplete="off">
+				<input name="lotto_csrf_token" value="f57a1e3a8b2cd21f435106b19034cc4a7dcd2185fba9bea8d60b7083077d7c2f1b3aa6dec6094966ae80248042f48eb07e08b694daf0b70cb1ef25835fc58adb" type="hidden">
+				<div class="deposit-amounts">
+					<div class="deposit-amount">
+						<div class="deposit-amount-value" data-amount="20">$20</div>
+					</div>
+					<div class="deposit-amount">
+						<div class="deposit-amount-value" data-amount="50">$50</div>
+					</div>
+					<div class="deposit-amount">
+						<div class="deposit-amount-value" data-amount="100">$100</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="deposit-amount-account form-group">
+						<label for="inputAmount">deduct 5% expenses of amount <input type="text" name="apply_amount" id="inputAmount" value=""></label>
+						<div class="deposit-amount-error-cloud">The minimum withdrawal amount is $20.</div>
+					</div>
+					<div class="deposit-amount-account form-group">
+						<label for="withdrawlEmail">Paypal Account:<input type="email" id="withdrawlEmail" name="user_email" value="{{account.email}}"></label>
+						<div class="deposit-amount-error-cloud">The email address for paypal.</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<button type="submit" class="btn btn-primary btn-lg btn-payment btn-mobile-large" id="paymentSubmit" name="payment" value="1">withdrawl</button>
+			</form>	
+		</div>
+    </div>
+</div>
+{% endblock %}
