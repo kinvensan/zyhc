@@ -36,9 +36,9 @@ module.exports = class extends Base {
             return {
               user_id: userLogin.user_id,
               lottery_id: item.lottery_id,
-              ticket_bets: item.ticket_bets,
+              ticket_bets: item.ticket_bets || 0,
               ticket_amount: item.ticket_amount,
-              ticket_number: item.ticket_number,
+              ticket_number: item.ticket_number || 0,
               ticket_status: 1
             };
           }));

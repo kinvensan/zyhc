@@ -20,4 +20,8 @@ module.exports = class extends think.Service {
       think.logger.error(error);
     });
   }
+
+  trimStr(str) {
+    return str.replace(/[\r\n]/g, '').replace(/(^\s*)|(\s*$)/g, '');
+  }
 };

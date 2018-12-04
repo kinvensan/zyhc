@@ -22,7 +22,11 @@ module.exports = class extends BaseCrawler {
       };
       items.push(item);
     });
-    await this.pipline(items);
+    await this.pipline(items.map(item => {
+      item.country = this.trimStr(item.country);
+      item.lottery_title = this.trimStr(item.lottery_title);
+      return item;
+    }));
   }
 
   async pipline(items) {
@@ -42,6 +46,7 @@ module.exports = class extends BaseCrawler {
     const ResultsModel = think.model('results');
     const lastResult = await ResultsModel.where({lottery_id: item.lottery_id, last_flag: 1}).find();
     item.updated_at = ['exp', 'CURRENT_TIMESTAMP()'];
+    think.logger.info(item);
     if (think.isEmpty(lastResult)) {
       await ResultsModel.add(item);
     } else if (lastResult.last_draw_at === item.last_draw_at) {

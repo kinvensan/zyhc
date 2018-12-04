@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 25/11/2018 19:48:08
+ Date: 30/11/2018 19:22:43
 */
 
 SET NAMES utf8mb4;
@@ -39,6 +39,7 @@ CREATE TABLE `admin_login` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `admin_login` VALUES ('admin', 1, '3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d', '1542277510164', NULL, 0, '2018-11-14 22:13:57', '2018-11-15 18:25:10');
+INSERT INTO `admin_login` VALUES ('test4', 5, '3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d', '1542273022505', NULL, 0, '2018-11-15 17:10:22', '2018-11-15 17:10:22');
 COMMIT;
 
 -- ----------------------------
@@ -61,7 +62,7 @@ CREATE TABLE `article` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='文章';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='文章';
 
 -- ----------------------------
 -- Records of article
@@ -90,13 +91,14 @@ CREATE TABLE `balance` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='资金';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='资金';
 
 -- ----------------------------
 -- Records of balance
 -- ----------------------------
 BEGIN;
-INSERT INTO `balance` VALUES (1, 6, 92.00, '2018-11-23 19:09:53', '2018-11-23 20:09:54');
+INSERT INTO `balance` VALUES (1, 6, 118.00, '2018-11-23 19:09:53', '2018-11-30 19:02:01');
+INSERT INTO `balance` VALUES (2, 12, 0.00, '2018-11-30 19:14:06', '2018-11-30 19:14:06');
 COMMIT;
 
 -- ----------------------------
@@ -114,7 +116,7 @@ CREATE TABLE `balance_record` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='资金流水';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='资金流水';
 
 -- ----------------------------
 -- Records of balance_record
@@ -124,6 +126,25 @@ INSERT INTO `balance_record` VALUES (1, 6, 1, 23.00, 'deposit 23', '9', 16, '201
 INSERT INTO `balance_record` VALUES (2, 6, -1, 23.00, 'buy ticket', '9', 16, '2018-11-23 15:53:03', '2018-11-23 15:53:03');
 INSERT INTO `balance_record` VALUES (3, 6, -1, 5.00, 'buy ticket', NULL, 22, '2018-11-23 19:22:21', '2018-11-23 19:22:21');
 INSERT INTO `balance_record` VALUES (4, 6, -1, 3.00, 'buy ticket', NULL, 23, '2018-11-23 20:09:54', '2018-11-23 20:09:54');
+INSERT INTO `balance_record` VALUES (5, 6, -1, 40.00, 'buy ticket', NULL, 24, '2018-11-26 15:03:44', '2018-11-26 15:03:44');
+INSERT INTO `balance_record` VALUES (6, 6, -1, 1.00, 'buy ticket', NULL, 25, '2018-11-29 19:31:59', '2018-11-29 19:31:59');
+INSERT INTO `balance_record` VALUES (7, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 16:50:35', '2018-11-30 16:50:35');
+INSERT INTO `balance_record` VALUES (8, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 16:50:35', '2018-11-30 16:50:35');
+INSERT INTO `balance_record` VALUES (9, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 16:50:35', '2018-11-30 16:50:35');
+INSERT INTO `balance_record` VALUES (10, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 17:06:24', '2018-11-30 17:06:24');
+INSERT INTO `balance_record` VALUES (11, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 17:06:24', '2018-11-30 17:06:24');
+INSERT INTO `balance_record` VALUES (12, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 17:06:24', '2018-11-30 17:06:24');
+INSERT INTO `balance_record` VALUES (13, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 17:20:50', '2018-11-30 17:20:50');
+INSERT INTO `balance_record` VALUES (14, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 17:20:50', '2018-11-30 17:20:50');
+INSERT INTO `balance_record` VALUES (15, 6, 1, 30.00, 'game ball win', NULL, NULL, '2018-11-30 17:20:50', '2018-11-30 17:20:50');
+INSERT INTO `balance_record` VALUES (16, 6, -1, 3.00, 'buy ticket', NULL, 26, '2018-11-30 18:54:45', '2018-11-30 18:54:45');
+INSERT INTO `balance_record` VALUES (17, 6, 1, 2.00, 'deposit 2', '19', 27, '2018-11-30 18:56:57', '2018-11-30 18:56:57');
+INSERT INTO `balance_record` VALUES (18, 6, -1, 2.00, 'buy ticket', '19', 27, '2018-11-30 18:56:57', '2018-11-30 18:56:57');
+INSERT INTO `balance_record` VALUES (19, 6, 1, 2.00, 'deposit 2', '20', 28, '2018-11-30 18:57:32', '2018-11-30 18:57:32');
+INSERT INTO `balance_record` VALUES (20, 6, -1, 2.00, 'buy ticket', '20', 28, '2018-11-30 18:57:32', '2018-11-30 18:57:32');
+INSERT INTO `balance_record` VALUES (21, 6, -1, 20.00, 'buy ticket', NULL, 29, '2018-11-30 19:02:01', '2018-11-30 19:02:01');
+INSERT INTO `balance_record` VALUES (22, 12, 1, 1.00, 'deposit 1', '22', 30, '2018-11-30 19:14:06', '2018-11-30 19:14:06');
+INSERT INTO `balance_record` VALUES (23, 12, -1, 1.00, 'buy ticket', '22', 30, '2018-11-30 19:14:06', '2018-11-30 19:14:06');
 COMMIT;
 
 -- ----------------------------
@@ -158,12 +179,12 @@ CREATE TABLE `lottery` (
 -- Records of lottery
 -- ----------------------------
 BEGIN;
-INSERT INTO `lottery` VALUES (1, 'powerball', 'Powerball', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_1.png', 4.05, '$', 'USA', 69, 5, 26, 1, 1, 5, 155000000, 1543118340, '2018-11-02 12:01:47', '2018-11-24 12:00:02', 24.87);
-INSERT INTO `lottery` VALUES (2, 'megamillions', 'Mega Millions', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_2.png', 4.00, '$', 'USA', 70, 5, 25, 1, 1, 5, 155000000, 1543032000, '2018-11-02 12:01:47', '2018-11-24 12:00:02', 24.12);
-INSERT INTO `lottery` VALUES (3, 'eurojackpot', 'Eurojackpot', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_3.png', 3.70, '$', 'Europe', 50, 5, 10, 2, 1, 6, 22000000, 1543604400, '2018-11-02 12:01:47', '2018-11-24 12:00:02', 26.39);
-INSERT INTO `lottery` VALUES (4, 'superenalotto', 'SuperEnalotto', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_4.png', 2.50, '€', 'Italy', 90, 6, 0, 0, 1, 2, 68100000, 1543086000, '2018-11-02 12:01:47', '2018-11-24 12:00:02', 20.58);
-INSERT INTO `lottery` VALUES (5, 'lottouk', 'UK Lottery', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_5.png', 3.51, '£', 'UK', 59, 6, 0, 0, 1, 7, 4100000, 1543087800, '2018-11-02 12:01:47', '2018-11-24 12:00:02', 9.27);
-INSERT INTO `lottery` VALUES (6, 'euromillions', 'EuroMillions', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_6.png', 4.20, '$', 'Europe', 50, 5, 12, 2, 1, 6, 36000000, 1543347000, '2018-11-02 12:01:47', '2018-11-24 12:00:02', 12.98);
+INSERT INTO `lottery` VALUES (1, 'powerball', 'Powerball', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_1.png', 4.05, '$', 'USA', 69, 5, 26, 1, 1, 5, 183000000, 1543723140, '2018-11-02 12:01:47', '2018-11-30 19:11:02', 24.87);
+INSERT INTO `lottery` VALUES (2, 'megamillions', 'Mega Millions', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_2.png', 4.00, '$', 'USA', 70, 5, 25, 1, 1, 5, 190000000, 1543636800, '2018-11-02 12:01:47', '2018-11-30 19:11:02', 24.12);
+INSERT INTO `lottery` VALUES (3, 'eurojackpot', 'Eurojackpot', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_3.png', 3.70, '$', 'Europe', 50, 5, 10, 2, 1, 6, 22000000, 1543604400, '2018-11-02 12:01:47', '2018-11-30 19:11:02', 26.39);
+INSERT INTO `lottery` VALUES (4, 'superenalotto', 'SuperEnalotto', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_4.png', 2.50, '€', 'Italy', 90, 6, 0, 0, 1, 2, 71100000, 1543690800, '2018-11-02 12:01:47', '2018-11-30 19:11:02', 20.58);
+INSERT INTO `lottery` VALUES (5, 'lottouk', 'UK Lottery', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_5.png', 3.51, '£', 'UK', 59, 6, 0, 0, 1, 7, 3900000, 1543692600, '2018-11-02 12:01:47', '2018-11-30 19:11:02', 9.27);
+INSERT INTO `lottery` VALUES (6, 'euromillions', 'EuroMillions', 'play_default', 'https://content.lottopark.com/plugins/lotto-platform/public/images/lotteries/lottery_6.png', 4.20, '$', 'Europe', 50, 5, 12, 2, 1, 6, 48000000, 1543606200, '2018-11-02 12:01:47', '2018-11-30 19:11:02', 12.98);
 COMMIT;
 
 -- ----------------------------
@@ -193,7 +214,7 @@ CREATE TABLE `order_detail` (
   `currency` varchar(5) DEFAULT NULL COMMENT '币种',
   `ticket_amount` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT 'ticks金额',
   `ticket_number` int(11) NOT NULL COMMENT '猜号码（0为无效）',
-  `ticket_bets` int(11) NOT NULL DEFAULT '0' COMMENT '大小（1为小，2为大，0为无效）',
+  `ticket_bets` int(11) NOT NULL DEFAULT '0' COMMENT '特殊号码（未来为bnumber）',
   `shopcart_id` int(11) NOT NULL COMMENT '购物车来源ID',
   `ticket_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '订单状态（0为 无效，1为购物，2为转订单）',
   `draw_at` int(11) NOT NULL COMMENT '开奖时间',
@@ -203,7 +224,7 @@ CREATE TABLE `order_detail` (
   PRIMARY KEY (`id`),
   KEY `idx_shopcart_user_id_0` (`user_id`),
   KEY `idx_order_detail_orders_id` (`orders_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='订单';
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='订单';
 
 -- ----------------------------
 -- Records of order_detail
@@ -221,10 +242,10 @@ INSERT INTO `order_detail` VALUES (9, 11, 6, 3, 'eurojackpot', 'Eurojackpot', 'U
 INSERT INTO `order_detail` VALUES (10, 12, 6, 1, 'powerball', 'Powerball', 'USD', 10.00, 0, 1, 1, 2, 1543118340, 2, '2018-11-23 15:33:52', '2018-11-23 15:34:32');
 INSERT INTO `order_detail` VALUES (11, 12, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 5.00, 3, 0, 3, 2, 1542999600, 2, '2018-11-23 15:33:52', '2018-11-23 15:34:32');
 INSERT INTO `order_detail` VALUES (12, 12, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 10.00, 0, 1, 4, 2, 1542999600, 2, '2018-11-23 15:33:52', '2018-11-23 15:34:32');
-INSERT INTO `order_detail` VALUES (13, 13, 6, 1, 'powerball', 'Powerball', 'USD', 10.00, 0, 1, 1, 2, 1543118340, 2, '2018-11-23 15:36:27', '2018-11-23 15:38:25');
+INSERT INTO `order_detail` VALUES (13, 13, 6, 1, 'powerball', 'Powerball', 'USD', 10.00, 11, 1, 1, 2, 1543118340, 2, '2018-11-23 15:36:27', '2018-11-23 15:38:25');
 INSERT INTO `order_detail` VALUES (14, 13, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 5.00, 3, 0, 3, 2, 1542999600, 2, '2018-11-23 15:36:27', '2018-11-23 15:38:25');
 INSERT INTO `order_detail` VALUES (15, 13, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 10.00, 0, 1, 4, 2, 1542999600, 2, '2018-11-23 15:36:27', '2018-11-23 15:38:25');
-INSERT INTO `order_detail` VALUES (16, 14, 6, 1, 'powerball', 'Powerball', 'USD', 10.00, 0, 1, 1, 2, 1543118340, 2, '2018-11-23 15:41:07', '2018-11-23 15:41:20');
+INSERT INTO `order_detail` VALUES (16, 14, 6, 1, 'powerball', 'Powerball', 'USD', 10.00, 11, 1, 1, 2, 1543118340, 2, '2018-11-23 15:41:07', '2018-11-23 15:41:20');
 INSERT INTO `order_detail` VALUES (17, 14, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 5.00, 3, 0, 3, 2, 1542999600, 2, '2018-11-23 15:41:07', '2018-11-23 15:41:20');
 INSERT INTO `order_detail` VALUES (18, 14, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 10.00, 0, 1, 4, 2, 1542999600, 2, '2018-11-23 15:41:07', '2018-11-23 15:41:20');
 INSERT INTO `order_detail` VALUES (19, 15, 6, 1, 'powerball', 'Powerball', 'USD', 10.00, 0, 1, 1, 2, 1543118340, 2, '2018-11-23 15:42:35', '2018-11-23 15:42:50');
@@ -236,7 +257,7 @@ INSERT INTO `order_detail` VALUES (24, 17, 6, 3, 'eurojackpot', 'Eurojackpot', '
 INSERT INTO `order_detail` VALUES (25, 17, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 2.00, 3, 0, 9, 2, 1542999600, 2, '2018-11-23 18:50:52', '2018-11-23 18:50:52');
 INSERT INTO `order_detail` VALUES (26, 18, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 5.00, 0, 1, 8, 2, 1542999600, 2, '2018-11-23 18:52:18', '2018-11-23 18:52:18');
 INSERT INTO `order_detail` VALUES (27, 18, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 2.00, 3, 0, 9, 2, 1542999600, 2, '2018-11-23 18:52:18', '2018-11-23 18:52:18');
-INSERT INTO `order_detail` VALUES (28, 19, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 10.00, 0, 1, 10, 2, 1542999600, 2, '2018-11-23 18:52:56', '2018-11-23 18:52:56');
+INSERT INTO `order_detail` VALUES (28, 19, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 10.00, 28, 1, 10, 2, 1542999600, 2, '2018-11-23 18:52:56', '2018-11-23 18:52:56');
 INSERT INTO `order_detail` VALUES (29, 19, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 2.00, 4, 0, 11, 2, 1542999600, 2, '2018-11-23 18:52:56', '2018-11-23 18:52:56');
 INSERT INTO `order_detail` VALUES (30, 21, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 5.00, 0, 1, 12, 2, 1542999600, 2, '2018-11-23 19:18:38', '2018-11-23 19:18:38');
 INSERT INTO `order_detail` VALUES (31, 21, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 3.00, 3, 0, 13, 2, 1542999600, 2, '2018-11-23 19:18:38', '2018-11-23 19:18:38');
@@ -244,6 +265,18 @@ INSERT INTO `order_detail` VALUES (32, 22, 6, 3, 'eurojackpot', 'Eurojackpot', '
 INSERT INTO `order_detail` VALUES (33, 22, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 3.00, 2, 0, 15, 2, 1542999600, 2, '2018-11-23 19:22:21', '2018-11-23 19:22:21');
 INSERT INTO `order_detail` VALUES (34, 23, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 1.00, 0, 1, 18, 2, 1542999600, 2, '2018-11-23 20:09:54', '2018-11-23 20:09:54');
 INSERT INTO `order_detail` VALUES (35, 23, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 2.00, 2, 0, 19, 2, 1542999600, 2, '2018-11-23 20:09:54', '2018-11-23 20:09:54');
+INSERT INTO `order_detail` VALUES (36, 24, 6, 2, 'megamillions', 'Mega Millions', 'USD', 10.00, 0, 1, 22, 2, 1543377600, 2, '2018-11-26 15:03:44', '2018-11-26 15:03:44');
+INSERT INTO `order_detail` VALUES (37, 24, 6, 2, 'megamillions', 'Mega Millions', 'USD', 20.00, 11, 0, 23, 2, 1543377600, 2, '2018-11-26 15:03:44', '2018-11-26 15:03:44');
+INSERT INTO `order_detail` VALUES (38, 24, 6, 6, 'euromillions', 'EuroMillions', 'USD', 10.00, 0, 1, 24, 2, 1543347000, 2, '2018-11-26 15:03:44', '2018-11-26 15:03:44');
+INSERT INTO `order_detail` VALUES (39, 25, 6, 3, 'eurojackpot', 'Eurojackpot', 'USD', 1.00, 0, 1, 25, 2, 1543604400, 2, '2018-11-29 19:31:59', '2018-11-29 19:31:59');
+INSERT INTO `order_detail` VALUES (40, 26, 6, 2, 'megamillions', 'Mega Millions', 'USD', 1.00, 0, 2, 26, 2, 1543636800, 2, '2018-11-30 18:54:45', '2018-11-30 18:54:45');
+INSERT INTO `order_detail` VALUES (41, 26, 6, 1, 'powerball', 'Powerball', 'USD', 1.00, 0, 15, 27, 2, 1543723140, 2, '2018-11-30 18:54:45', '2018-11-30 18:54:45');
+INSERT INTO `order_detail` VALUES (42, 26, 6, 6, 'euromillions', 'EuroMillions', 'USD', 1.00, 41, 0, 28, 2, 1543606200, 2, '2018-11-30 18:54:45', '2018-11-30 18:54:45');
+INSERT INTO `order_detail` VALUES (43, 27, 6, 6, 'euromillions', 'EuroMillions', 'USD', 1.00, 24, 0, 29, 2, 1543606200, 2, '2018-11-30 18:56:28', '2018-11-30 18:56:57');
+INSERT INTO `order_detail` VALUES (44, 27, 6, 2, 'megamillions', 'Mega Millions', 'USD', 1.00, 23, 0, 30, 2, 1543636800, 2, '2018-11-30 18:56:28', '2018-11-30 18:56:57');
+INSERT INTO `order_detail` VALUES (45, 28, 6, 6, 'euromillions', 'EuroMillions', 'USD', 2.00, 0, 6, 31, 2, 1543606200, 2, '2018-11-30 18:57:20', '2018-11-30 18:57:32');
+INSERT INTO `order_detail` VALUES (46, 29, 6, 1, 'powerball', 'Powerball', 'USD', 20.00, 0, 24, 32, 2, 1543723140, 2, '2018-11-30 19:02:01', '2018-11-30 19:02:01');
+INSERT INTO `order_detail` VALUES (47, 30, 12, 2, 'megamillions', 'Mega Millions', 'USD', 1.00, 0, 14, 33, 2, 1543636800, 2, '2018-11-30 19:13:36', '2018-11-30 19:14:06');
 COMMIT;
 
 -- ----------------------------
@@ -261,7 +294,7 @@ CREATE TABLE `orders` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`),
   KEY `idx_orders_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='订单';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='订单';
 
 -- ----------------------------
 -- Records of orders
@@ -290,6 +323,13 @@ INSERT INTO `orders` VALUES (20, 6, 0, 0.00, 'USD', 2, '2018-11-23 19:02:28', '2
 INSERT INTO `orders` VALUES (21, 6, 2, 8.00, 'USD', 2, '2018-11-23 19:18:38', '2018-11-23 19:18:38');
 INSERT INTO `orders` VALUES (22, 6, 2, 5.00, 'USD', 2, '2018-11-23 19:22:21', '2018-11-23 19:22:21');
 INSERT INTO `orders` VALUES (23, 6, 2, 3.00, 'USD', 2, '2018-11-23 20:09:54', '2018-11-23 20:09:54');
+INSERT INTO `orders` VALUES (24, 6, 3, 40.00, 'USD', 2, '2018-11-26 15:03:44', '2018-11-26 15:03:44');
+INSERT INTO `orders` VALUES (25, 6, 1, 1.00, 'USD', 2, '2018-11-29 19:31:59', '2018-11-29 19:31:59');
+INSERT INTO `orders` VALUES (26, 6, 3, 3.00, 'USD', 2, '2018-11-30 18:54:45', '2018-11-30 18:54:45');
+INSERT INTO `orders` VALUES (27, 6, 2, 2.00, 'USD', 2, '2018-11-30 18:56:28', '2018-11-30 18:56:57');
+INSERT INTO `orders` VALUES (28, 6, 1, 2.00, 'USD', 2, '2018-11-30 18:57:20', '2018-11-30 18:57:32');
+INSERT INTO `orders` VALUES (29, 6, 1, 20.00, 'USD', 2, '2018-11-30 19:02:01', '2018-11-30 19:02:01');
+INSERT INTO `orders` VALUES (30, 12, 1, 1.00, 'USD', 2, '2018-11-30 19:13:36', '2018-11-30 19:14:06');
 COMMIT;
 
 -- ----------------------------
@@ -310,7 +350,7 @@ CREATE TABLE `payment` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`),
   KEY `idx_payment_payment_id` (`payment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='支付订单';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='支付订单';
 
 -- ----------------------------
 -- Records of payment
@@ -331,6 +371,13 @@ INSERT INTO `payment` VALUES (12, 19, 'be95ca54-6d61-4abf-b319-f44263b2b919', 6,
 INSERT INTO `payment` VALUES (13, 21, 'ce59fb35-f309-4b05-8481-e56e3e6d5ad7', 6, NULL, 'BANLANCE', 8.00, 'USD', 2, '2018-11-23 19:18:38', '2018-11-23 19:18:38');
 INSERT INTO `payment` VALUES (14, 22, '460dab8f-7706-4ec8-9096-fda952347bdf', 6, NULL, 'BANLANCE', 5.00, 'USD', 2, '2018-11-23 19:22:21', '2018-11-23 19:22:21');
 INSERT INTO `payment` VALUES (15, 23, 'e811af4d-f13c-4854-abae-3c57678a6cb5', 6, NULL, 'BANLANCE', 3.00, 'USD', 2, '2018-11-23 20:09:54', '2018-11-23 20:09:54');
+INSERT INTO `payment` VALUES (16, 24, 'da267342-e3cb-43f6-8682-9f36b7d6fd3b', 6, NULL, 'BANLANCE', 40.00, 'USD', 2, '2018-11-26 15:03:44', '2018-11-26 15:03:44');
+INSERT INTO `payment` VALUES (17, 25, '4681119d-42e0-4dc2-aef9-8ac02e00d07e', 6, NULL, 'BANLANCE', 1.00, 'USD', 2, '2018-11-29 19:31:59', '2018-11-29 19:31:59');
+INSERT INTO `payment` VALUES (18, 26, '92791ca9-8a48-4bc9-9807-6bdc2b942d8f', 6, NULL, 'BANLANCE', 3.00, 'USD', 2, '2018-11-30 18:54:45', '2018-11-30 18:54:45');
+INSERT INTO `payment` VALUES (19, 27, 'PAY-5S8078992H939071ULQAROXA', 6, 'CVHG9F5F6BHEW', 'PAYPAL', 2.00, 'USD', 2, '2018-11-30 18:56:28', '2018-11-30 18:56:57');
+INSERT INTO `payment` VALUES (20, 28, 'PAY-1C743544VM0283156LQARPEA', 6, 'CVHG9F5F6BHEW', 'PAYPAL', 2.00, 'USD', 2, '2018-11-30 18:57:20', '2018-11-30 18:57:32');
+INSERT INTO `payment` VALUES (21, 29, 'e574fdc4-d9d6-44f3-8be4-ce40b3286cce', 6, NULL, 'BANLANCE', 20.00, 'USD', 2, '2018-11-30 19:02:01', '2018-11-30 19:02:01');
+INSERT INTO `payment` VALUES (22, 30, 'PAY-4PJ61152XE3733616LQARWYA', 12, 'CVHG9F5F6BHEW', 'PAYPAL', 1.00, 'USD', 2, '2018-11-30 19:13:36', '2018-11-30 19:14:06');
 COMMIT;
 
 -- ----------------------------
@@ -384,7 +431,7 @@ CREATE TABLE `results` (
   PRIMARY KEY (`id`),
   KEY `idx_results_last_flag` (`last_flag`),
   KEY `idx_results_lottery_id` (`lottery_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='大乐透开奖结果';
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COMMENT='大乐透开奖结果';
 
 -- ----------------------------
 -- Records of results
@@ -418,12 +465,22 @@ INSERT INTO `results` VALUES (25, 1, 'powerball', 'Powerball', 1542513540, '{\"b
 INSERT INTO `results` VALUES (26, 5, 'lottouk', 'UK Lottery', 1542483000, '{\"b\": [32], \"n\": [4, 5, 9, 12, 17, 42]}', 'UK', 274087645.00, 1543087800, 4100000.00, 9.27, 0, '2018-11-19 12:59:55', '2018-11-21 12:01:02');
 INSERT INTO `results` VALUES (27, 6, 'euromillions', 'EuroMillions', 1542742200, '{\"b\": [7, 12], \"n\": [6, 19, 39, 45, 48]}', 'Europe', 9314636.75, 1543347000, 36000000.00, 12.98, 0, '2018-11-21 12:01:02', '2018-11-23 12:01:01');
 INSERT INTO `results` VALUES (28, 4, 'superenalotto', 'SuperEnalotto', 1542740400, '{\"b\": [7], \"n\": [3, 9, 43, 48, 61, 83]}', 'Italy', 2499972.56, 1543086000, 68100000.00, 20.58, 0, '2018-11-21 12:01:02', '2018-11-22 12:01:01');
-INSERT INTO `results` VALUES (29, 5, 'lottouk', 'UK Lottery', 1542828600, '{\"b\": [9], \"n\": [24, 31, 35, 42, 46, 53]}', 'UK', 1816260.00, 1543087800, 4100000.00, 9.27, 1, '2018-11-22 12:01:01', '2018-11-24 12:01:01');
-INSERT INTO `results` VALUES (30, 2, 'megamillions', 'Mega Millions', 1542772800, '{\"b\": [10], \"n\": [10, 16, 31, 42, 66]}', 'USA', 2359842.00, 1543032000, 155000000.00, 24.12, 1, '2018-11-22 12:01:01', '2018-11-24 12:01:01');
-INSERT INTO `results` VALUES (31, 4, 'superenalotto', 'SuperEnalotto', 1542913200, '{\"b\": [51], \"n\": [15, 24, 28, 34, 56, 73]}', 'Italy', 2378856.74, 1543086000, 68100000.00, 20.58, 1, '2018-11-23 11:31:01', '2018-11-24 12:01:01');
-INSERT INTO `results` VALUES (32, 1, 'powerball', 'Powerball', 1542859140, '{\"b\": [18], \"n\": [7, 14, 23, 38, 55]}', 'USA', 6073409.00, 1543118340, 155000000.00, 24.87, 1, '2018-11-23 11:31:01', '2018-11-24 12:01:01');
-INSERT INTO `results` VALUES (33, 6, 'euromillions', 'EuroMillions', 1543001400, '{\"b\": [3, 10], \"n\": [5, 8, 25, 26, 30]}', 'Europe', 13334064.11, NULL, NULL, NULL, 1, '2018-11-24 12:01:01', '2018-11-24 12:01:01');
-INSERT INTO `results` VALUES (34, 3, 'eurojackpot', 'Eurojackpot', 1542999600, '{\"b\": [5, 10], \"n\": [17, 22, 28, 31, 46]}', 'Europe', 10652829.90, NULL, NULL, NULL, 1, '2018-11-24 12:01:01', '2018-11-24 12:01:01');
+INSERT INTO `results` VALUES (29, 5, 'lottouk', 'UK Lottery', 1542828600, '{\"b\": [9], \"n\": [24, 31, 35, 42, 46, 53]}', 'UK', 1816260.00, 1543087800, 4100000.00, 9.27, 0, '2018-11-22 12:01:01', '2018-11-24 12:01:01');
+INSERT INTO `results` VALUES (30, 2, 'megamillions', 'Mega Millions', 1542772800, '{\"b\": [10], \"n\": [10, 16, 31, 42, 66]}', 'USA', 2359842.00, 1543032000, 155000000.00, 24.12, 0, '2018-11-22 12:01:01', '2018-11-24 12:01:01');
+INSERT INTO `results` VALUES (31, 4, 'superenalotto', 'SuperEnalotto', 1542913200, '{\"b\": [51], \"n\": [15, 24, 28, 34, 56, 73]}', 'Italy', 2378856.74, 1543086000, 68100000.00, 20.58, 0, '2018-11-23 11:31:01', '2018-11-24 12:01:01');
+INSERT INTO `results` VALUES (32, 1, 'powerball', 'Powerball', 1542859140, '{\"b\": [18], \"n\": [7, 14, 23, 38, 55]}', 'USA', 6073409.00, 1543118340, 155000000.00, 24.87, 0, '2018-11-23 11:31:01', '2018-11-24 12:01:01');
+INSERT INTO `results` VALUES (33, 6, 'euromillions', 'EuroMillions', 1543001400, '{\"b\": [3, 10], \"n\": [5, 8, 25, 26, 30]}', 'Europe', 13334064.11, 1543606200, 48000000.00, 12.98, 0, '2018-11-24 12:01:01', '2018-11-27 12:20:01');
+INSERT INTO `results` VALUES (34, 3, 'eurojackpot', 'Eurojackpot', 1542999600, '{\"b\": [5, 10], \"n\": [17, 22, 28, 31, 46]}', 'Europe', 10652829.90, 1543604400, 22000000.00, 26.39, 1, '2018-11-24 12:01:01', '2018-11-30 19:20:03');
+INSERT INTO `results` VALUES (35, 1, 'powerball', 'Powerball', 1543118340, '{\"b\": [18], \"n\": [11, 33, 51, 56, 58]}', 'USA', 2716623.00, 1543723140, 183000000.00, 24.87, 0, '2018-11-25 21:45:04', '2018-11-29 15:20:02');
+INSERT INTO `results` VALUES (36, 5, 'lottouk', 'UK Lottery', 1543087800, '{\"b\": [10], \"n\": [15, 27, 30, 32, 42, 43]}', 'UK', 417551465.00, 1543692600, 3900000.00, 9.27, 0, '2018-11-25 21:45:04', '2018-11-28 22:30:02');
+INSERT INTO `results` VALUES (37, 4, 'superenalotto', 'SuperEnalotto', 1543086000, '{\"b\": [45], \"n\": [30, 38, 63, 68, 77, 80]}', 'Italy', 2961492.98, 1543518000, 70000000.00, 20.58, 0, '2018-11-25 21:45:04', '2018-11-27 12:20:01');
+INSERT INTO `results` VALUES (38, 2, 'megamillions', 'Mega Millions', 1543032000, '{\"b\": [23], \"n\": [7, 10, 30, 33, 59]}', 'USA', 1950248.00, 1543636800, 190000000.00, 24.12, 0, '2018-11-25 21:45:04', '2018-11-27 12:20:01');
+INSERT INTO `results` VALUES (39, 2, 'megamillions', 'Mega Millions', 1543377600, '{\"b\": [18], \"n\": [12, 24, 37, 42, 57]}', 'USA', 2066566.00, 1543636800, 190000000.00, 24.12, 1, '2018-11-28 21:50:03', '2018-11-30 19:20:03');
+INSERT INTO `results` VALUES (40, 6, 'euromillions', 'EuroMillions', 1543347000, '{\"b\": [2, 11], \"n\": [4, 16, 17, 18, 32]}', 'Europe', 10176178.56, 1543606200, 48000000.00, 12.98, 1, '2018-11-28 21:50:03', '2018-11-30 19:20:03');
+INSERT INTO `results` VALUES (41, 4, 'superenalotto', 'SuperEnalotto', 1543345200, '{\"b\": [37], \"n\": [6, 12, 15, 30, 31, 89]}', 'Italy', 2661463.58, 1543690800, 71100000.00, 20.58, 0, '2018-11-28 21:50:03', '2018-11-29 23:00:02');
+INSERT INTO `results` VALUES (42, 5, 'lottouk', 'UK Lottery', 1543433400, '{\"b\": [38], \"n\": [36, 39, 45, 46, 48, 52]}', 'UK', 4576270.00, 1543692600, 3900000.00, 9.27, 1, '2018-11-29 09:30:06', '2018-11-30 19:20:03');
+INSERT INTO `results` VALUES (43, 1, 'powerball', 'Powerball', 1543463940, '{\"b\": [21], \"n\": [4, 19, 59, 68, 69]}', 'USA', 3435556.00, 1543723140, 183000000.00, 24.87, 1, '2018-11-29 15:30:01', '2018-11-30 19:20:03');
+INSERT INTO `results` VALUES (44, 4, 'superenalotto', 'SuperEnalotto', 1543518000, '{\"b\": [28], \"n\": [6, 22, 27, 36, 62, 76]}', 'Italy', 2354139.77, 1543690800, 71100000.00, 20.58, 1, '2018-11-30 11:00:02', '2018-11-30 19:20:03');
 COMMIT;
 
 -- ----------------------------
@@ -442,7 +499,7 @@ CREATE TABLE `shopcart` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`),
   KEY `idx_shopcart_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='订单';
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='订单';
 
 -- ----------------------------
 -- Records of shopcart
@@ -463,8 +520,18 @@ INSERT INTO `shopcart` VALUES (14, 6, 3, 2.00, 0, 1, 2, '2018-11-23 19:22:14', '
 INSERT INTO `shopcart` VALUES (15, 6, 3, 3.00, 2, 0, 2, '2018-11-23 19:22:14', '2018-11-23 19:22:21');
 INSERT INTO `shopcart` VALUES (18, 6, 3, 1.00, 0, 1, 2, '2018-11-23 20:09:46', '2018-11-23 20:09:54');
 INSERT INTO `shopcart` VALUES (19, 6, 3, 2.00, 2, 0, 2, '2018-11-23 20:09:46', '2018-11-23 20:09:54');
-INSERT INTO `shopcart` VALUES (22, 6, 2, 10.00, 0, 1, 1, '2018-11-25 15:52:56', '2018-11-25 15:52:56');
-INSERT INTO `shopcart` VALUES (23, 6, 2, 20.00, 11, 0, 1, '2018-11-25 15:52:56', '2018-11-25 15:52:56');
+INSERT INTO `shopcart` VALUES (22, 6, 2, 10.00, 0, 1, 2, '2018-11-25 15:52:56', '2018-11-26 15:03:44');
+INSERT INTO `shopcart` VALUES (23, 6, 2, 20.00, 11, 0, 2, '2018-11-25 15:52:56', '2018-11-26 15:03:44');
+INSERT INTO `shopcart` VALUES (24, 6, 6, 10.00, 0, 1, 2, '2018-11-26 15:03:09', '2018-11-26 15:03:44');
+INSERT INTO `shopcart` VALUES (25, 6, 3, 1.00, 0, 1, 2, '2018-11-29 19:31:48', '2018-11-29 19:31:59');
+INSERT INTO `shopcart` VALUES (26, 6, 2, 1.00, 0, 2, 2, '2018-11-30 18:54:35', '2018-11-30 18:54:45');
+INSERT INTO `shopcart` VALUES (27, 6, 1, 1.00, 0, 15, 2, '2018-11-30 18:54:35', '2018-11-30 18:54:45');
+INSERT INTO `shopcart` VALUES (28, 6, 6, 1.00, 41, 0, 2, '2018-11-30 18:54:35', '2018-11-30 18:54:45');
+INSERT INTO `shopcart` VALUES (29, 6, 6, 1.00, 24, 0, 2, '2018-11-30 18:55:43', '2018-11-30 18:56:57');
+INSERT INTO `shopcart` VALUES (30, 6, 2, 1.00, 23, 0, 2, '2018-11-30 18:56:18', '2018-11-30 18:56:57');
+INSERT INTO `shopcart` VALUES (31, 6, 6, 2.00, 0, 6, 2, '2018-11-30 18:57:16', '2018-11-30 18:57:32');
+INSERT INTO `shopcart` VALUES (32, 6, 1, 20.00, 0, 24, 2, '2018-11-30 19:01:59', '2018-11-30 19:02:01');
+INSERT INTO `shopcart` VALUES (33, 12, 2, 1.00, 0, 14, 2, '2018-11-30 19:13:23', '2018-11-30 19:14:06');
 COMMIT;
 
 -- ----------------------------
@@ -493,7 +560,7 @@ CREATE TABLE `user` (
   `address` varchar(100) DEFAULT NULL COMMENT '地址',
   `timezone` varchar(20) DEFAULT NULL COMMENT '时区',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
 
 -- ----------------------------
 -- Records of user
@@ -510,6 +577,7 @@ INSERT INTO `user` VALUES (8, NULL, NULL, 0, 'pp@user.com', NULL, NULL, NULL, NU
 INSERT INTO `user` VALUES (9, NULL, NULL, 0, 'pp2@user.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-20 21:05:35', NULL, 0, '2018-11-20 21:05:35', '2018-11-20 21:05:35', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (10, 'pp3@user.com', NULL, 0, 'pp3@user.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-20 21:08:34', NULL, 0, '2018-11-20 21:08:34', '2018-11-20 21:08:34', NULL, NULL, NULL);
 INSERT INTO `user` VALUES (11, 'pp4@user.com', NULL, 0, 'pp4@user.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-20 21:18:53', NULL, 0, '2018-11-20 21:18:53', '2018-11-20 21:18:53', NULL, NULL, NULL);
+INSERT INTO `user` VALUES (12, 'pp5@user.com', NULL, 0, 'pp5@user.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-30 19:12:57', NULL, 0, '2018-11-30 19:12:57', '2018-11-30 19:12:57', NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -535,6 +603,7 @@ CREATE TABLE `user_login` (
 BEGIN;
 INSERT INTO `user_login` VALUES ('pp3@user.com', 10, '4ee69d7dcfa38efbe5010e5be09e4cfd47ae12b8', '1542719314063', NULL, 0, '2018-11-20 21:08:34', '2018-11-20 21:08:34');
 INSERT INTO `user_login` VALUES ('pp4@user.com', 11, '157bd4027c3548927e0b01444030852106ae19eb', '1542719933466', NULL, 0, '2018-11-20 21:18:53', '2018-11-20 21:18:53');
+INSERT INTO `user_login` VALUES ('pp5@user.com', 12, '9fd29bb578a4f9838b8539d71e795b681056c4f0', '1543576377853', NULL, 0, '2018-11-30 19:12:57', '2018-11-30 19:12:57');
 INSERT INTO `user_login` VALUES ('xqw2@163.com', 6, 'df0bcd37bf803f6ac16c901b4e80e90df2fc15b1', '1543041001050', NULL, 0, '2018-11-15 17:28:03', '2018-11-24 14:30:01');
 COMMIT;
 
@@ -566,26 +635,52 @@ DROP TABLE IF EXISTS `winner`;
 CREATE TABLE `winner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
-  `user_type` smallint(6) DEFAULT NULL COMMENT '用户类型',
+  `user_type` smallint(6) DEFAULT NULL COMMENT '用户类型(0,假用户，1 真用户）',
   `user_name` varchar(100) DEFAULT NULL COMMENT '用户名称',
   `lottery_id` int(11) DEFAULT NULL COMMENT '获奖lotto',
   `win_amount` int(11) NOT NULL COMMENT '获得奖金',
-  `win_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '获奖时间',
+  `win_at` int(11) NOT NULL COMMENT '获奖时间',
+  `order_detail_id` int(11) DEFAULT NULL COMMENT '订单详情 ticket Id',
+  `results_id` int(11) DEFAULT NULL COMMENT '中奖结果ID',
+  `status` smallint(6) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='获奖表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='获奖表';
 
 -- ----------------------------
 -- Records of winner
 -- ----------------------------
 BEGIN;
-INSERT INTO `winner` VALUES (1, 0, 0, 'mike***', 3, 10, '2018-11-21 12:08:32', '2018-11-21 12:08:32', '2018-11-21 12:08:32');
-INSERT INTO `winner` VALUES (2, 0, 0, 'mike***', 6, 10, '2018-11-21 12:08:32', '2018-11-21 12:08:32', '2018-11-21 12:08:32');
-INSERT INTO `winner` VALUES (3, 0, 0, 'mike***', 5, 10, '2018-11-21 12:08:32', '2018-11-21 12:08:32', '2018-11-21 12:08:32');
-INSERT INTO `winner` VALUES (4, 0, 0, 'mike***', 2, 10, '2018-11-21 12:08:32', '2018-11-21 12:08:32', '2018-11-21 12:08:32');
-INSERT INTO `winner` VALUES (5, 0, 0, 'mike***', 1, 10, '2018-11-21 12:08:32', '2018-11-21 12:08:32', '2018-11-21 12:08:32');
-INSERT INTO `winner` VALUES (6, 0, 0, 'mike***', 4, 10, '2018-11-21 12:08:32', '2018-11-21 12:08:32', '2018-11-21 12:08:32');
+INSERT INTO `winner` VALUES (1, 6, 1, 'kinven', 3, 30, 1542999600, 28, 34, NULL, '2018-11-30 17:20:50', '2018-11-30 17:20:50');
+INSERT INTO `winner` VALUES (2, 6, 1, 'kinven', 1, 30, 1543118340, 13, 35, NULL, '2018-11-30 17:20:50', '2018-11-30 17:20:50');
+INSERT INTO `winner` VALUES (3, 6, 1, 'kinven', 1, 30, 1543118340, 16, 35, NULL, '2018-11-30 17:20:50', '2018-11-30 17:20:50');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for withdrawal
+-- ----------------------------
+DROP TABLE IF EXISTS `withdrawal`;
+CREATE TABLE `withdrawal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `user_email` varchar(50) DEFAULT NULL COMMENT '用户邮件地址',
+  `user_name` varchar(100) DEFAULT NULL COMMENT '用户名',
+  `amount` decimal(14,2) DEFAULT NULL COMMENT '提现金额',
+  `fee` decimal(14,2) DEFAULT NULL COMMENT '费用',
+  `balance` decimal(14,2) DEFAULT NULL COMMENT '申请时的余额',
+  `status` varchar(16) NOT NULL COMMENT '提现状态',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_withdrawal_user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='提现申请';
+
+-- ----------------------------
+-- Records of withdrawal
+-- ----------------------------
+BEGIN;
+INSERT INTO `withdrawal` VALUES (1, 6, 'xqw2@163.com', NULL, 20.00, 0.00, NULL, '1', '2018-11-30 11:03:39', '2018-11-30 11:03:39');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -23,10 +23,15 @@ module.exports = class extends BaseCrawler {
       };
       items.push(item);
     });
-    await this.pipline(items);
+    await this.pipline(items.map(item => {
+      item.country = this.trimStr(item.country);
+      item.lottery_title = this.trimStr(item.lottery_title);
+      return item;
+    }));
   }
 
   async pipline(items) {
+    think.logger.debug(items);
     const lotteryMap = await this.lotteryTitleMap();
     items.map(async(item) => {
       const lottery = lotteryMap[item.lottery_title];

@@ -3818,8 +3818,8 @@ div.main-width {
 }
 
 header div.main-width {
-    padding-top: 27px;
-    padding-bottom: 27px
+    padding-top: 10px;
+    padding-bottom: 15px
 }
 
 header div.header-logo,header h1 {
@@ -4161,7 +4161,7 @@ div.order-info div.order-info-desc span.order-info-amount {
 
 nav#primary-nav {
     height: 28px;
-    padding: 29px 0
+    padding: 15px 0
 }
 
 nav#primary-nav div>ul.menu {
@@ -15812,8 +15812,8 @@ section.user-area div.user-info div.user-info-area-active a {
 }
 
 #ico-add {
-    height: 75px;
-    width: 150px;
+    height: 300px;
+    width: 300px;
     position: fixed;
     top: 15px;
     right: 15px

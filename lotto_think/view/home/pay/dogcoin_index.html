@@ -1,0 +1,15 @@
+{% extends "../inc/base.html" %}
+{% block content %}
+    <div>
+        <h2>{{coin_address}}</h2>
+        <div> <img id="qrcode" src="" data-qrcode="{{coin_address}}"></div>
+    </div>
+
+{% endblock %}
+{% block paypalscript %}
+<script src="/static/js/jr-qrcode.js" data-version-4></script>
+<script>
+    var imgBase64 = jrQrcode.getQrBase64(window.jQuery('#qrcode').data('qrcode'));
+    window.jQuery('#qrcode').attr('src',imgBase64);
+</script>
+{% endblock %}

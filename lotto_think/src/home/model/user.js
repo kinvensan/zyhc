@@ -11,6 +11,12 @@ module.exports = class extends BaseModel {
     return this.where({id}).find();
   }
 
+  findById(id) {
+    if (!think.isEmpty(id)) {
+      return this.where({id}).find();
+    }
+  }
+
   saveUser(userId, user) {
     if (!think.isEmpty(userId) && !think.isEmpty(user)) {
       user.updated_at = ['EXP', 'NOW()'];

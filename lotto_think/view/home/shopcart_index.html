@@ -43,7 +43,7 @@
 		<div class="clearfix"></div>
         <div class="order-buttons">
             <div class="pull-left">
-                <a href="/play/" class="btn btn-secondary">add more tickets</a>
+				<a href="/play/" class="btn btn-secondary">add more tickets</a>
             </div>
             <div class="pull-right">
 				<table>
@@ -51,7 +51,7 @@
 				{% if user and shopcart.amount > 0 %}
 				<td>
                 <span class="order-sum">Total Sum: <span>${{shopcart.amount}}</span></span>
-				<div><a id="banlance-button-pay" href="#" data-apost="/balance/pay" class="btn btn-primary" data-balance="{{user.balance}}" data-amount="{{shopcart.amount}}">pay with balance</a></div>
+				<div><a id="banlance-button-pay" href="#" data-apost="/pay/balance" class="btn btn-primary" data-balance="{{user.balance}}" data-amount="{{shopcart.amount}}">pay with balance</a></div>
 				</td><td>
 				<div id="paypal-button-container"></div>
 				</td>
@@ -90,7 +90,7 @@ paypal.Button.render({
 	},
 
 	payment: function(data, actions) {
-		return actions.request.post('/pay/create')
+		return actions.request.post('/pay/paypal/create')
 		.then(function(res) {
 			if(res.errno === 0) {
 				return res.data.id;
@@ -100,7 +100,7 @@ paypal.Button.render({
 	},
 
 	onAuthorize: function(data, actions) {
-		return actions.request.post('/pay/execute', {
+		return actions.request.post('/pay/paypal/execute', {
 		paymentID: data.paymentID,
 		payerID: data.payerID
 		})
