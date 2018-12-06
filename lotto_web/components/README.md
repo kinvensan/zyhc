@@ -1,7 +1,19 @@
 # COMPONENTS
 
-**This directory is not required, you can delete it if you don't want to use it.**
+## 目录说明
+*** The components directory contains your Vue.js Components. ***
+app 目录是业务组件
+base 是通用组件
+layout 是布局组件
 
-The components directory contains your Vue.js Components.
+## app
 
-_Nuxt.js doesn't supercharge these components._
+
+### Login组件
+
+
+### LoginOut组件
+
+### SignUp组件
+
+### Apply组件

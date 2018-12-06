@@ -1,9 +1,7 @@
 <template>
-  <body style="width: 100%;">
-<!-- uiView: --><div ui-view="" class="index-wrap ng-scope" my-document-width="" style=""><div class="indexMinWidth ng-scope">
-    <!-- uiView: header --><div ui-view="header" class="ng-scope"><!--<ytbet-home-slide></ytbet-home-slide>-->
-<div class="view_header ng-scope" style="">
-    <div class="myheader">
+<!-- uiView: header -->
+  <div class="view_header" style="">
+    <div class="w-header">
         <!--顶部导航-->
         <div class="w-1200"><a class="logo" ui-sref="index" href="/index"><img src="./../../../images/yt888/logo.png"></a></div>
         <div class="head">
@@ -70,10 +68,10 @@
         <div class="w-1200">
             <div class=" header clearfix">
                 <ul>
-                    <li ng-class="{'nav_active':$location.path()=='/index'}" class="" style=""><a ui-sref="index" href="/index"></a></li>
+                    <li ng-class="{'nav_active':$location.path()=='/index'}"><a ui-sref="index" href="/index"></a></li>
                     <li ui-sref-active="nav_active" ng-class="{'nav_active':$location.path()=='/index/live'}" style="background-position-x: -111px;">
                         <!-- ngIf: isCasinoAllowed&&liveAllTypes.length --><a href="" ng-if="isCasinoAllowed&amp;&amp;liveAllTypes.length" ng-click="goGameOrRoom('live',liveAllTypes)" class="ng-scope" style=""></a><!-- end ngIf: isCasinoAllowed&&liveAllTypes.length -->
-                        <div class="header-nav-list" style="display: none;">
+                        <div class="header-nav-list">
                             <ul class="header-nav-list-ul">
                                 <!-- ngRepeat: data in liveAllTypes --><li class="header-nav-list-li ng-scope" ng-repeat="data in liveAllTypes" style=""><a ng-click="playGame(data)" class="ng-binding">AG视讯</a></li><!-- end ngRepeat: data in liveAllTypes --><li class="header-nav-list-li ng-scope" ng-repeat="data in liveAllTypes"><a ng-click="playGame(data)" class="ng-binding">GD视讯</a></li><!-- end ngRepeat: data in liveAllTypes --><li class="header-nav-list-li ng-scope" ng-repeat="data in liveAllTypes"><a ng-click="playGame(data)" class="ng-binding">OG视讯</a></li><!-- end ngRepeat: data in liveAllTypes --><li class="header-nav-list-li ng-scope" ng-repeat="data in liveAllTypes"><a ng-click="playGame(data)" class="ng-binding">申博视讯</a></li><!-- end ngRepeat: data in liveAllTypes --><li class="header-nav-list-li ng-scope" ng-repeat="data in liveAllTypes"><a ng-click="playGame(data)" class="ng-binding">欧博视讯</a></li><!-- end ngRepeat: data in liveAllTypes --><li class="header-nav-list-li ng-scope" ng-repeat="data in liveAllTypes"><a ng-click="playGame(data)" class="ng-binding">EB视讯</a></li><!-- end ngRepeat: data in liveAllTypes -->
                             </ul>
@@ -164,20 +162,20 @@
                     <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" autocomplete="off" name="$parent.loginModalForm" novalidate="" ng-submit="modalLogin()">
                         <div class="form-group" style="position: relative;">
                             <label class="userName-icon" for="userName"></label>
-                            <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" id="userName" tabindex="1" autofocus="" type="text" ng-model="$parent.userNameModal" ng-focus="changeModalInput()" required="" name="userName" placeholder="请输入您的账号" style="">
+                            <input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="userName" tabindex="1" autofocus="" type="text" ng-model="$parent.userNameModal" ng-focus="changeModalInput()" required="" name="userName" placeholder="请输入您的账号">
                             <!--<a ui-sref="forgetPassword" style="position: absolute;top: 3px;right: 1px;width: 42px;height:31px;line-height: 31px;text-align: center;text-decoration: none;border-left: 1px solid #575757;color: #666666;" data-dismiss="modal" aria-hidden="true">忘记?</a>-->
                         </div>
                         <div class="form-group">
                             <label class="password-icon" for="password"> </label>
-                            <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" tabindex="2" type="password" ng-model="$parent.passwordModal" ng-focus="changeModalInput()" id="password" required="" name="password" placeholder="请输入您的密码" style="">
+                            <input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" tabindex="2" type="password" ng-model="$parent.passwordModal" ng-focus="changeModalInput()" id="password" required="" name="password" placeholder="请输入您的密码">
                             <!--<a ui-sref="forgetPassword"-->
                             <!--style="position: absolute;top: 3px;right: 1px;width: 42px;height:31px;line-height: 31px;text-align: center;text-decoration: none;border-left: 1px solid #575757;color: #666666;"-->
                             <!--data-dismiss="modal" aria-hidden="true">忘记?</a>-->
                         </div>
                         <div class="form-group yzm">
                             <label class="yzm-icon" for="yzm"></label>
-                            <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" tabindex="3" type="text" ng-model="$parent.verifyCodeModal" required="" id="yzm" ng-focus="changeModalInput(true)" name="yzm" placeholder="请输入验证码" style="">
-                            <a class="verifyimage " ng-click="changeInput(true)"><img ng-src="/d/m/verifyimage?16.21?u=7eb46e" src="/d/m/verifyimage?16.21?u=7eb46e"></a>
+                            <input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" tabindex="3" type="text" ng-model="$parent.verifyCodeModal" required="" id="yzm" ng-focus="changeModalInput(true)" name="yzm" placeholder="请输入验证码">
+                            <a class="verifyimage " ng-click="changeInput(true)"><img ng-src="/d/m/verifyimage?u=7eb46e" src="/d/m/verifyimage?u=7eb46e"></a>
                         </div>
                         <div class="form-group loginError red">
                             <!-- ngIf: $parent.loginModalForm.$invalid&&submit -->
@@ -214,7 +212,7 @@
                     <div class="text ng-binding"></div>
                 </div>
                 <div class="myMmodal-footer clearfix">
-                    <div class="pull-left alreadyRead"><input type="checkbox" ng-model="alreadyRead" class="ng-pristine ng-untouched ng-valid ng-empty" value="">勾选为已读，下次登录将不会再显示此登录框内容
+                    <div class="pull-left alreadyRead"><input type="checkbox" ng-model="alreadyRead" class="ng-pristine ng-untouched ng-valid ng-empty">勾选为已读，下次登录将不会再显示此登录框内容
                     </div>
                     <div class="pull-right">
                         <!-- ngIf: allUserPopups.length-1!=iNow --><a href="#" class="btn btn-purple ps-r ng-scope" ng-click="nextUserPopups(alreadyRead,userPopups.Id)" ng-if="allUserPopups.length-1!=iNow">下一条</a><!-- end ngIf: allUserPopups.length-1!=iNow -->
@@ -298,10 +296,10 @@
                             <div class="col-sm-4 " style="padding-left: 0;">
                                 <div class="form-inline">
                                     <label class="control-label ">
-                                        <input type="checkbox" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" value="" name="auditModalStatus" ng-model="auditModalStatus1" ng-change="changeAuditModalStatus()">未通过
+                                        <input type="checkbox" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" value="1" name="auditModalStatus" ng-model="auditModalStatus1" ng-change="changeAuditModalStatus()">未通过
                                     </label>
                                     <label class="control-label ">
-                                        <input type="checkbox" class="form-control ng-pristine ng-untouched ng-valid ng-empty" value="" name="auditModalStatus" ng-model="auditModalStatus2" ng-change="changeAuditModalStatus()">已通过
+                                        <input type="checkbox" class="form-control ng-pristine ng-untouched ng-valid ng-empty" value="0" name="auditModalStatus" ng-model="auditModalStatus2" ng-change="changeAuditModalStatus()">已通过
                                     </label>
                                     <div class="search-btn" style="display: inline-block;margin-left: 5px;" ng-click="getTurnoverauditlist()">刷新</div>
                                 </div>
@@ -402,368 +400,37 @@
         </div>
     </div>
 </div>
-<script class="ng-scope">
-    $(".header>ul>li").mouseover(function () {
-        $(this).find('div').show()
-    }).mouseleave(function () {
-        $(this).find('div').fadeOut(100)
-    })
-</script></div>
-    <!--<div ui-view="main" ng-style="{'padding-top':isHeaderFiex?'':'174px'}"></div>-->
-    <!-- uiView: main --><div ui-view="main" ng-style="{'padding-top':isHeaderFiex?'':'174px'}" class="ng-scope" style="padding-top: 174px;"><div style="margin-top: -75px;" class="ng-scope"></div>
-
-<!--<ytbet-go-top style="display: none"></ytbet-go-top>-->
-<div class="view-lottery ng-scope">
-    <div class="view-announcement">
-        <my-announcement new="new" class="noIndexannouncement ng-isolate-scope"><div class="new-wrap">
-    <div class="w-1200 clearfix">
-        <div class="title pull-left">重要通知：</div>
-        <a href="" ng-click="openHistoryNew()" style="outline: none">
-            <div class="move pull-right">
-                <div class="content ng-binding" style="left: -861.111px;" ng-bind-html="new | html"><span style="padding-right:100px">滚动公告</span><span style="padding-right:100px">不要玩AG、MG、PT</span></div>
-            </div>
-        </a>
-        <!--<div>-->
-            <!--<img src="../../images/yt888/middle-line.png" alt="" style="display: block;margin: 0 auto;width: 100%;">-->
-        <!--</div>-->
-    </div>
-
 </div>
-
-<div class="my-modal historyNewModal">
-    <div class="cd-popup" role="alert">
-        <div class="cd-popup-container">
-            <a href="javascript:void (0);" class="cd-popup-close myModalClose"></a>
-            <div class="myModal-header">
-                <div class="title"><img src="../../images/yt888/modal/systemNotice-title.png" alt=""></div>
-            </div>
-            <div class="header-button-line"></div>
-            <div class="myModal-body">
-                <!--<ul >-->
-                <!--<li ng-repeat="data in historyNew">{{data}}</li>-->
-                <!--</ul>-->
-                <ul>
-                    <!-- ngRepeat: data in historyNew -->
-                </ul>
-                <div class="fundingRecords clearfix">
-                    <div class="myPager">
-                        <div class="pull-left">
-                            <sapn>每页显示</sapn>
-                            <select class="selectPager ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="pageSize" ng-change="changePageSize(pageSize)">
-                                <option value="5" selected="selected">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                            </select>条
-                        </div>
-                        <ul style="margin-top: -7px;float: right;" previous-text="<" next-text=">" uib-pagination="" max-size="4" force-ellipses="true" total-items="total" items-per-page="pageSize" ng-model="$parent.pageNow" ng-change="openHistoryNew()" class="ng-pristine ng-untouched ng-valid ng-isolate-scope pagination ng-empty" role="menu"><!-- ngIf: ::boundaryLinks -->
-<!-- ngIf: ::directionLinks --><li role="menuitem" ng-if="::directionLinks" ng-class="{disabled: noPrevious()||ngDisabled}" class="pagination-prev ng-scope disabled"><a href="" ng-click="selectPage(page - 1, $event)" ng-disabled="noPrevious()||ngDisabled" uib-tabindex-toggle="" class="ng-binding" disabled="disabled" tabindex="-1">&lt;</a></li><!-- end ngIf: ::directionLinks -->
-<!-- ngRepeat: page in pages track by $index --><li role="menuitem" ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled&amp;&amp;!page.active}" class="pagination-page ng-scope active"><a href="" ng-click="selectPage(page.number, $event)" ng-disabled="ngDisabled&amp;&amp;!page.active" uib-tabindex-toggle="" class="ng-binding">1</a></li><!-- end ngRepeat: page in pages track by $index -->
-<!-- ngIf: ::directionLinks --><li role="menuitem" ng-if="::directionLinks" ng-class="{disabled: noNext()||ngDisabled}" class="pagination-next ng-scope disabled"><a href="" ng-click="selectPage(page + 1, $event)" ng-disabled="noNext()||ngDisabled" uib-tabindex-toggle="" class="ng-binding" disabled="disabled" tabindex="-1">&gt;</a></li><!-- end ngIf: ::directionLinks -->
-<!-- ngIf: ::boundaryLinks -->
-</ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--<div class="modal  historyNewModal fade" id="historyNew">-->
-    <!--<div class="modal-dialog" my-drag my-center-left>-->
-        <!--<div class="modal-content">-->
-            <!--<div class="modal-header">-->
-                <!--<h3 class="modal-title lb">系统公告</h3>-->
-                <!--<button type="button" class="close"  data-dismiss="modal" >-->
-                    <!--<span aria-hidden="true">-->
-                        <!--&times;-->
-                    <!--</span>-->
-                <!--</button>-->
-            <!--</div>-->
-            <!--<div class="modal-body neirong">-->
-                <!--&lt;!&ndash;<ul >&ndash;&gt;-->
-                    <!--&lt;!&ndash;<li ng-repeat="data in historyNew">{{data}}</li>&ndash;&gt;-->
-                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-                <!--<ul>-->
-                    <!--<li ng-repeat="data in historyNew">-->
-                        <!--<div class="text">-->
-                            <!--{{data.Content}}-->
-                        <!--</div>-->
-                        <!--<div class="time">-->
-                            <!--{{data.UpdateTs|date:"yyyy-MM-dd"}}-->
-                        <!--</div>-->
-                    <!--</li>-->
-                <!--</ul>-->
-                <!--<div class="fundingRecords">-->
-                    <!--<div class="myPager">-->
-                        <!--<div class="pull-left">-->
-                            <!--<sapn>每页显示</sapn>-->
-                            <!--<select class="selectPager" ng-model="pageSize" ng-change="changePageSize(pageSize)">-->
-                                <!--<option value="5">5</option>-->
-                                <!--<option value="10">10</option>-->
-                                <!--<option value="15">15</option>-->
-                                <!--<option value="20">20</option>-->
-                            <!--</select>条-->
-                        <!--</div>-->
-                        <!--<ul style="margin-top: -7px" previous-text="<" next-text=">" uib-pagination max-size="4" force-ellipses="true"  total-items="total" items-per-page="pageSize" ng-model="$parent.pageNow" ng-change="openHistoryNew()"></ul>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>--></my-announcement>
-    </div>
-
-    <div class="w-1200">
-        <!-- ngIf: logined -->
-        <!-- ngIf: logined -->
-        <!-- ngIf: !logined --><activity-banner ng-if="!logined" class="ng-scope"><div><img style="-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;" src="../../images/yt888/activityBanner/lottery_banner.jpg"></div></activity-banner><!-- end ngIf: !logined -->
-        <div class="lottery-recommend clearfix">
-            <div class="lottery-recommend-list"><img src="../../../images/yt888/lottery/ssc.png" alt=""> <div class="img-hover" ng-click="playGame({'ProviderId':25, 'ProviderGameCode': '3', 'Language': 'zhCN','Platform':1})"></div>
-            </div>
-            <div class="lottery-recommend-list"><img src="../../../images/yt888/lottery/pk10.png" alt=""><div class="img-hover" ng-click="playGame({'ProviderId':25, 'ProviderGameCode': '8', 'Language': 'zhCN','Platform':1})"></div>
-            </div>
-        </div>
-        <div class="lottery-content clearfix">
-            <!-- ngRepeat: data in lotteryAllTypes | orderBy:'Id'  --><div ng-repeat="data in lotteryAllTypes | orderBy:'Id' " class="lotteryList clearfix VRLottery">
-    <!--<img class="big-img" src="../../../images/yt888/{{data.Code}}.png" alt="">-->
-                <div class="card-big-img">
-                    <i></i>
-                    <span ng-click="playGame(data)"></span>
-                </div>
-                <div class="detial clearfix">
-
-                    <!--<img src="../../../images/yt888/{{data.Code}}-detial.png" alt="">-->
-                    <div class="detial-sologen">
-                        <img class="logo" src="../../../images/yt888/lottery/VRLottery-logo.png" alt="">
-                        <!--{{data.Name}}-->
-                        <div class="sologen">支持设备：手机电脑网页端</div>
-                        <!--<div class="start-game" ng-click="playGame({'ProviderId': data.ProviderId, 'ProviderGameCode': data.ProviderGameCode, 'Language': 'zhCN','Platform':1})"></div>-->
-                    </div>
-                    <div class="detial-img"></div>
-
-                </div>
-            </div><!-- end ngRepeat: data in lotteryAllTypes | orderBy:'Id'  -->
-            <!--<div class="lotteryList" ng-repeat="data in lotteryList" ng-click="playGame(data[0])">-->
-                <!--<span>{{$index+1}}</span>-->
-                <!--<div><img src="../images/{{data[0].GameCode}}.png"/></div>-->
-                <!--<p>{{data[1]}}</p>-->
-                <!--<a>开始游戏</a>-->
-            <!--</div>-->
-        </div>
-    </div>
-</div>
-
-<!-- ngRepeat: data in FloatAdList -->
-</div>
-    <!-- uiView: foot --><div ui-view="foot" class="ng-scope"><div class="view_footer ng-scope">
-    <div class="foot_down">
-        <div class="w-1200 footer-nav clearfix">
-            <ul class="clearfix">
-                <li><a ui-sref="about" href="/index/help/about">关于我们</a><i>/</i></li>
-                <!--<li><a>隐私政策</a></li>-->
-                <li><a ui-sref="duty" href="/index/help/duty">责任博彩</a><i>/</i></li>
-                <li><a ui-sref="link" href="/index/help/link">联系我们</a><i>/</i></li>
-                <!--<li><a ui-sref="disclaimer">免责声明</a><i>/</i></li>-->
-                <li><a ui-sref="faq" href="/index/help/faq">常见问题</a><i>/</i></li>
-                <li><a ui-sref="support" href="/index/help/support">技术支援</a><i>/</i></li>
-                <!--<li><a ui-sref="depoit">存款帮助</a><i>/</i></li>-->
-                <!--<li><a>转账帮助</a></li>-->
-                <!--<li><a ui-sref="withdrawalHelp">取款帮助</a><i>/</i></li>-->
-                <li><a ui-sref="cooperation" href="/index/agent/cooperation">代理中心</a></li>
-                <!--<a ui-sref="personalInformation"><span>111111111111</span></a>-->
-            </ul>
-        </div>
-        <div class="w-1200 footer-copyright clearfix"><span>版权所有 © 2007-2019 亚投娱乐 保留所有权</span></div>
-    </div>
-</div></div>
-</div>
-
-
-
-
-
-<!--<div class="snowMask"></div>-->
-<!--这个是系统公告-->
-<div class="modal fade popModal ng-scope" id="systemPopModal">
-    <div ng-transclude="" class="modal-dialog" my-center-left="" my-drag="" style="left: 383px;">
-        <div class="modal-content ng-scope">
-            <div class="modal-header">
-                <h3 class="modal-title lb ng-binding"></h3>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">
-                        ×
-                    </span>
-                </button>
-            </div>
-            <div class="modal-body neirong">
-                <div class="text ng-binding"></div>
-                <div class="button-wrap">
-                    <!--<a class="btn btn-primary" ng-click="gotofr('personalInformation')">立即去绑定~</a>-->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--新闻-->
-
-<!--<div class="newNews" ng-if="timerStampList.length&&!NewNewsFlag">-->
-    <!--<div class=" newsModal"  my-drag my-center-left ng-repeat="data in timerStampList" ng-hide="data.showFlag">-->
-        <!--<div class="newsModal-dialog">-->
-            <!--&lt;!&ndash;<div class="modal-content" style="background: url('/d/carouseladvert/image/?p={{popupAd.Url}}');height:100%;">&ndash;&gt;-->
-            <!--<div class="modal-content">-->
-                <!--<div class="modal-header">-->
-                    <!--<h3 class="modal-title lb">公告</h3>-->
-                    <!--<button type="button" class="close"  ng-click="closeNewNews(data)">&times;</button>-->
-                <!--</div>-->
-                <!--<div class="modal-body neirong">-->
-                    <!--{{data.Content}}-->
-                <!--</div>-->
-                <!--<div class="modal-footer">-->
-                    <!--<a ui-sref="messageAnnouncement" class="btn btn-primary btn-sm" ng-show="data.Type!=All">查看详情</a>-->
-                    <!--<a ng-click="closeNewNews(data)" class="btn btn-primary btn-sm" ng-show="data.Type==All">确定</a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-<!--转账进游戏弹框-->
-<!--<div class="my-modal goGamePopModal">-->
-    <!--<div class="cd-popup" role="alert">-->
-        <!--<div class="cd-popup-container">-->
-            <!--<a href="javascript:void (0);" class="cd-popup-close myModalClose"></a>-->
-            <!--<div class="myModal-header">-->
-                <!--<div class="title"><img src="../../../images/yt888/modal/Into-account-title.png" alt=""></div>-->
-            <!--</div>-->
-            <!--<div class="header-button-line"></div>-->
-            <!--<div class="myModal-body">-->
-                <!--<div class="group">-->
-                    <!--<span class="title">转出：</span>-->
-                    <!--<div class="input-group">-->
-                        <!--<span class="input-group-addon">我的钱包</span>-->
-                        <!--<input ng-model="balance" class="form-control form-inline" readonly disabled>-->
-                        <!--&lt;!&ndash;<span class="input-group-addon" ng-click="gotoUrl('deposit')">去存款</span>&ndash;&gt;-->
-                        <!--<a href="" class="btn btn-sm btn-go myModalClose" ui-sref="depositTab">去存款</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="group">-->
-                    <!--<span  class="title">转入：</span>-->
-                    <!--<div class="input-group">-->
-                        <!--<span class="input-group-addon">{{checktransferFlag[3]}}</span>-->
-                        <!--<input ng-model="lottery.Balance"  control-keyup class="form-control form-inline" readonly disabled>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="group">-->
-                    <!--<span  class="title">金额：</span>-->
-                    <!--<div class="input-group" style="background: transparent;">-->
-                        <!--&lt;!&ndash;<span class="input-group-addon">￥</span>&ndash;&gt;-->
-                        <!--<input ng-model="$parent.price"  controlKeyup class="form-control form-inline" placeholder="请输入金额" style="width: 365px;background: transparent;border-bottom: 1px solid #ADB4C1;">-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div style="height: 27px;margin-top: -10px;margin-bottom: 10px;font-size: 12px;">-->
-                    <!--<div class="form-group error red" ng-show="errorInfo">-->
-                        <!--<span class="glyphicon glyphicon-exclamation-sign"></span> {{errorInfo}}-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group clearfix" style="width: 419px;margin-left: -15px;padding-bottom: 10px;">-->
-                    <!--<a class="btn toGame" ng-click="toGame(lottery.ProviderId,$parent.price)" style="margin-left: 0px;">确认转账</a>-->
-                    <!--<a class="btn gotoLotteryHtml" ng-click="gotoLotteryHtml(null,lottery.ProviderId)" style="margin-left: 38px;">进入游戏</a>-->
-
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!--转账-->
-<!--<div class="modal  fade goGamePopModal" id="goGamePopModal">-->
-    <!--<div class="modal-dialog" my-center-left my-drag>-->
-        <!--<div class="modal-content ">-->
-            <!--<div class="modal-header">-->
-                <!--<h3 class="modal-title lb">快速转账</h3>-->
-                <!--<button type="button" class="close"  data-dismiss="modal" >-->
-                    <!--<span aria-hidden="true">-->
-                        <!--&times;-->
-                    <!--</span>-->
-                <!--</button>-->
-            <!--</div>-->
-            <!--<div class="modal-body neirong">-->
-                <!--<div class="group">-->
-                    <!--<span class="title">转出：</span>-->
-                    <!--<div class="input-group">-->
-                        <!--<span class="input-group-addon">我的钱包</span>-->
-                        <!--<input ng-model="balance" class="form-control form-inline" readonly disabled>-->
-                        <!--<a href="" class="btn btn-sm btn-go" ng-click="gotoUrl('deposit')">去存款</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="group">-->
-                    <!--<span  class="title">转入：</span>-->
-                    <!--<div class="input-group">-->
-                        <!--<span class="input-group-addon">{{checktransferFlag[3]}}</span>-->
-                        <!--<input ng-model="lottery.Balance"  class="form-control form-inline" readonly disabled>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="group">-->
-                    <!--<span  class="title">金额：</span>-->
-                    <!--<div class="input-group">-->
-                        <!--<span class="input-group-addon">￥</span>-->
-                        <!--<input ng-model="$parent.price"  class="form-control form-inline" placeholder="请输入金额">-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group error red" ng-show="errorInfo">-->
-                    <!--<span class="glyphicon glyphicon-exclamation-sign"></span> {{errorInfo}}-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<a class="btn toGame" ng-click="toGame(lottery.ProviderId,$parent.price)">确认转账</a>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<a class="btn gotoLotteryHtml" ng-click="gotoLotteryHtml(null,lottery.ProviderId)">进人游戏</a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-</div>
-
-
-
-
-<!--<div class="modal  fade loginErrorModal" id="allErrorModal" data-backdrop="static">-->
-    <!--<div class="modal-dialog" my-center-left my-drag>-->
-        <!--<div class="modal-content">-->
-            <!--<div class="modal-header">-->
-                <!--<h3 class="modal-title lb"> 操作提示 </h3>-->
-                <!--<button type="button" class="close" data-dismiss="modal">-->
-                                <!--<span aria-hidden="true">-->
-                                    <!--&times;-->
-                                <!--</span>-->
-                <!--</button>-->
-            <!--</div>-->
-            <!--<div class="modal-body neirong">-->
-                <!--<div class="text">{{textError}}</div>-->
-                <!--<div><a href="" class="btn" data-dismiss="modal"> 确定 </a></div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-</body>
 </template>
-
 <script>
-
 export default {
-  components: {
+  data() {
+    copyright:'lotterywd.com'
   }
 }
 </script>
-
-<style>
-.index-wrap {
-  height: 100%;
+<style lang="sass" scoped>
+.view-header {
+  .w-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    width: 100%;
+    background: url(~/assets/images/header_bg.png) no-repeat center;
+  }
+  .logo {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  a {
+    text-decoration: none !important;
+    color: white;
+    cursor: pointer;
+  }
 }
 </style>
+
+

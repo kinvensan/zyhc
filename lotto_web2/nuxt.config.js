@@ -11,7 +11,19 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { name:'og:title', content:''},
+      { name:'og:description', content:''},
+      { name:'og:type', content:'website'},
+      { name:'og:url', content:'https://lotterywd.com'},
+      { name:'og:image', content:'https://www.lotterywd.com/icon.png'},
+      { name:'twitter:card', content:'summary'},
+      { name:'twitter:site', content:''},
+      { name:'twitter:title', content:''},
+      { name:'twitter:title', content:''},
+      { name:'twitter:description',content:''},
+      { name:'twitter:image',content:''},
+      { name:'twitter:image:alt',content:''},
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -27,6 +39,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    'bulma'
   ],
 
   /*
@@ -41,8 +54,9 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt'
+    // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
+    '@nuxtjs/bulma',
+    '@nuxtjs/font-awesome'
   ],
   /*
   ** Axios module configuration
@@ -55,6 +69,13 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    postcss: {
+      preset: {
+        features: {
+          customProperties: false
+        }
+      }
+    },
     /*
     ** You can extend webpack config here
     */
@@ -63,7 +84,8 @@ module.exports = {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
-          test: /\.(js|vue)$/,
+          // test: /\.(js|vue)$/,
+          test: /\.(js)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })

@@ -1,7 +1,7 @@
 {
   "name": "lotto_web",
   "version": "1.0.0",
-  "description": "lotterywd.com one ball one world",
+  "description": "lotterywd.com site",
   "author": "kinven",
   "private": true,
   "scripts": {
@@ -13,17 +13,19 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/bulma": "^1.2.0",
+    "@nuxtjs/font-awesome": "^1.0.3",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.0.0",
-    "bootstrap-vue": "^2.0.0-beta",
-    "bootstrap": "^4.1.3",
-    "@nuxtjs/axios": "^5.0.0"
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint-plugin-vue": "^4.0.0",
+    "node-sass": "^4.10.0",
+    "nodemon": "^1.11.0",
+    "sass-loader": "^7.1.0"
   }
 }

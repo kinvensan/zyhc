@@ -1,6 +1,6 @@
 # lotto_web
 
-> lotterywd.com one ball one world
+> lotterywd.com site
 
 ## Build Setup
 

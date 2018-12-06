@@ -1,7 +1,14 @@
 # LAYOUTS
 
-**This directory is not required, you can delete it if you don't want to use it.**
+## 整体布局
 
-This directory contains your Application Layouts.
+## 提供不同页面的布局
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/views#layouts).
+## default
+默认布局： 主要用于未登陆的要求
+
+## home
+首页布局
+
+## account
+用户账号登陆后的布局，账号功能的布局
