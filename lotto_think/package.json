@@ -10,7 +10,7 @@
     "lint-fix": "eslint --fix src/"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.2",
     "hash.js": "^1.1.5",
     "koa-csrf": "^3.0.6",
